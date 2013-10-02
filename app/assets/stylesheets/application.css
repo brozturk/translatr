@@ -17,7 +17,7 @@
 Main Stylesheet
 */
 body {
-  background: #e9e9e9 url(../img/tiny_grid.png) repeat 0 0;
+  background: #e9e9e9 url(tiny_grid.png) repeat 0 0;
   font: 13px/1.7em 'Open Sans';
 }
 p {
@@ -466,7 +466,7 @@ h6 {
 .ui-datepicker-next-hover .ui-icon,
 .ui-datepicker-prev-hover .ui-icon {
   background-color: #ffffff;
-  background-image: url(../css/ui-lightness/images/ui-icons_222222_256x240.png);
+  background-image: url(ui-icons_222222_256x240.png);
   opacity: .5;
 }
 /*------------------------------------------------------------------
@@ -481,7 +481,7 @@ h6 {
   z-index: 2;
   width: 25px;
   height: 16px;
-  background: url(../img/jquery/handle.png) no-repeat;
+  background: url(handle.png) no-repeat;
   border: none;
   cursor: pointer;
 }
@@ -566,7 +566,7 @@ h6 {
   margin-bottom: -0.6em;
   width: 15px;
   height: 24px;
-  background: url(../img/jquery/handle-vertical.png) no-repeat;
+  background: url(handle-vertical.png) no-repeat;
 }
 .ui-slider-vertical .ui-slider-handle:hover {
   background-position: 0 -24px;
@@ -635,7 +635,7 @@ h6 {
   left: 0;
   width: 15px;
   height: 15px;
-  background: url(../img/validation/validation-success.png) no-repeat 0 0;
+  background: url(validation-success.png) no-repeat 0 0;
 }
 .form-horizontal .form-group span.error {
   margin-left: 1.5em;
@@ -864,34 +864,34 @@ h6 {
   padding-left: 90px;
 }
 .jquery-msgbox-alert {
-  background: url(../img/notifications/alert-48.png) no-repeat 21px 20px;
+  background: url(alert-48.png) no-repeat 21px 20px;
 }
 .jquery-msgbox-info {
-  background: url(../img/notifications/info-48.png) no-repeat 21px 20px;
+  background: url(info-48.png) no-repeat 21px 20px;
 }
 .jquery-msgbox-error {
-  background: url(../img/notifications/error-48.png) no-repeat 21px 20px;
+  background: url(error-48.png) no-repeat 21px 20px;
 }
 .jquery-msgbox-prompt {
-  background: url(../img/notifications/question-dark-48.png) no-repeat 20px 20px;
+  background: url(question-dark-48.png) no-repeat 20px 20px;
 }
 .jquery-msgbox-confirm {
-  background: url(../img/notifications/question-48.png) no-repeat 20px 20px;
+  background: url(question-48.png) no-repeat 20px 20px;
 }
 /*------------------------------------------------------------------
 [ Growl / .msgGrowl ]
 */
 .msgGrowl.success .msgGrowl-content {
-  background: url(../img/notifications/success-32.png) no-repeat 7px 13px;
+  background: url(success-32.png) no-repeat 7px 13px;
 }
 .msgGrowl.error .msgGrowl-content {
-  background: url(../img/notifications/error-32.png) no-repeat 7px 13px;
+  background: url(error-32.png) no-repeat 7px 13px;
 }
 .msgGrowl.info .msgGrowl-content {
-  background: url(../img/notifications/info-32.png) no-repeat 7px 13px;
+  background: url(info-32.png) no-repeat 7px 13px;
 }
 .msgGrowl.warning .msgGrowl-content {
-  background: url(../img/notifications/alert-32.png) no-repeat 7px 13px;
+  background: url(alert-32.png) no-repeat 7px 13px;
 }
 /*------------------------------------------------------------------
 [ Back to Top / #back-to-top ]
@@ -1316,7 +1316,7 @@ ul.pagination li.active a:hover {
   width: 184px;
   height: 120px;
   background-color: rgba(0, 0, 0, 0.65);
-  background-image: url(../img/gallery/zoom.png);
+  background-image: url(zoom.png);
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border-top-right-radius: 3px;
@@ -1950,9 +1950,9 @@ body{ color:#838383; font: 13px/1.7em 'Open Sans';}
   height: 40px;
 }
 
-.username-field { background: url(../../img/signin/user.png) no-repeat; }
+.username-field { background: url(user.png) no-repeat; }
 
-.password-field { background: url(../../img/signin/password.png) no-repeat; }
+.password-field { background: url(password.png) no-repeat; }
 
 
 
@@ -1998,7 +1998,7 @@ span.login-checkbox > input[type='checkbox'] + label {
     font-size: 12px;
     line-height: 1.2em;
     
-    background: url(../../img/signin/check.png) no-repeat 0 0;
+    background: url(check.png) no-repeat 0 0;
     
     cursor: pointer;
 }
@@ -2036,14 +2036,14 @@ span.login-checkbox > input[type='checkbox']:checked + label {
   width: 157px; 
   display: block;
   
-  background: url(../../img/signin/twitter_btn.png) no-repeat; 
+  background: url(twitter_btn.png) no-repeat; 
   
 }
 
 .fb {
   width: 162px; 
   
-  background: url(../../img/signin/fb_btn.png) no-repeat;       
+  background: url(fb_btn.png) no-repeat;       
 }
 
 .twitter:active, .fb:active {
