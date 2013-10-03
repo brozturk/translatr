@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to new_user_path, success: 'Üyeliğiniz başarılı bir şekilde yapıldı.'
     else
-      redirect_to new_user_path, error: 'Girmiş olduğunuz bilgilerde hata var.Lütfen tekrar deneyin.'
+      redirect_to new_user_path, danger: 'Girmiş olduğunuz bilgilerde hata var.Lütfen tekrar deneyin.'
     end
   end
 
