@@ -40,15 +40,16 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.before(:each) do 
+  config.before(:suite) do 
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before(:each) do 
     DatabaseCleaner.start
   end
 
-  config.after(:each) do 
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 end
+

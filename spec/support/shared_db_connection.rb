@@ -6,4 +6,4 @@ class ActiveRecord::Base
     @@shared_connection || retrieve_connection
   end
 end
-ActoveRecord::Base.shared_connection = ActiveRecord::Base.connection
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
