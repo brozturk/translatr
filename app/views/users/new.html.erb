@@ -3,7 +3,7 @@
   <div class="content clearfix">
 
     <form action="./index.html" method="post">
-      <%= form_for @user do |f| %>
+      <%= form_for(@user)  do |f| %>
 
       <h1>Hesap Oluştur</h1>      
 
@@ -11,11 +11,11 @@
         <p>Sosyal ağ kullanarak kayıt olun</p>
 
         <div class="twitter">
-          <a href="#" class="btn_1">Twitter kullanarak kayıt olun</a>        
+          <a href="#" class="btn_1">Twitter ile kayıt </a>        
         </div>
 
         <div class="fb">
-          <a href="#" class="btn_2">Facebook kullanarak kayıt olun</a>       
+          <a href="#" class="btn_2">Facebook ile kayıt </a>       
         </div>
       </div>
 
@@ -33,7 +33,7 @@
 
 
         <div class="field">
-          <%= f.email_field :email, :placeholder => 'Mail Adresi', class: "form-control" %>
+          <%= f.text_field :email, :placeholder => 'Mail Adresi', class: "form-control" %>
         </div> <!-- /field -->
 
         <div class="field">
@@ -49,11 +49,8 @@
       <div class="login-actions">
 
         <span class="login-checkbox">
-          <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-          <label class="choice" for="Field">I have read and agree with the Terms of Use.</label>
         </span>
 
-        <button class="login-action btn btn-primary">Register</button>
         <%= f.submit 'Beni Kaydet!' , class:"login-action btn btn-primary" %>
 
       </div> <!-- .actions -->
