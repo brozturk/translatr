@@ -9,6 +9,7 @@ feature 'User can sign up' do
       fill_in 'Mail Adresi', with: 'burak@burak.com'
       fill_in 'Şifre', with: '123456'
       fill_in 'Şifre Tekrar', with: '123456'
+      click_button 'Beni Kaydet!'
     }.to change(User, :count).by(1)
   end
 end
