@@ -34,7 +34,7 @@ group :doc do
 end
 
 group :test do 
-  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'faker'
   gem 'database_cleaner'
