@@ -1,9 +1,8 @@
 Translatr::Application.routes.draw do
 
 
-  scope(path_names: { new: 'uyelik' }) do 
-    resources :users, path: 'kullanici'
-  end
+  resources :users
+  root 'users#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
