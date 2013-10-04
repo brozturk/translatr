@@ -23,9 +23,10 @@
       <div class="login-actions">
 
         <span class="login-checkbox">
-          <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-          <label class="choice" for="Field">Beni Hatırla!</label>
+          <%= check_box_tag :remember_me, 1, params[:remember_me], class: "field login-checkbox" %>
+          <%= label_tag :remember_me, 'Beni Hatırla!', class: "choice" %>
         </span>
+
 
         <%= f.submit 'Giriş', class: "login-action btn btn-primary" %>
 
