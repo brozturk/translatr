@@ -1,22 +1,58 @@
 require 'spec_helper'
 
-feature 'user signs up' do 
-  scenario 'with valid information' do 
-    create_user_and_login
-    expect(page).to have_content 'Başarılı bir şekilde giriş yapıldı!'
-    expect(current_path).to eq users_path(@user)
+feature 'User can sign up' do 
+  scenario 'with valid information' do
+    visit new_user_path
+    expect{
+      fill_in 'İsim', with: 'burak'
+      fill_in 'Soy İsim', with: 'ozturk'
+      fill_in 'Mail Adresi', with: 'burak@burak.com'
+      fill_in 'Şifre', with: '123456'
+      fill_in 'Şifre Tekrar', with: '123456'
+      click_button 'Beni Kaydet!'
+    }.to change(User, :count).by(1)
   end
 
-  scenario 'with invalid information' do 
-    login_with_invalid_info
-    expect(page).to have_content 'Giriş sırasında sorun oluştu lütfen bilgilerin doğruluğunu kontrol et' 
-    expect(current_path).to eq root_path
-  end
-
-  scenario 'user can click signup link and go to that page' do
-    visit root_path
-    click_link 'Kayıt ol!'
-    expect(page).to have_content 'Hesap Oluştur'
+  scenario 'with invalid email' do  
+    visit new_user_path
+    expect{
+      fill_in 'İsim', with: 'burak'
+      fill_in 'Soy İsim', with: 'ozturk'
+      fill_in 'Mail Adresi', with: 'bloblow'
+      fill_in 'Şifre', with: '123456'
+      fill_in 'Şifre Tekrar', with: '123456'
+      click_button 'Beni Kaydet!'
+    }.to_not change(User, :count).by(1) 
+    expect(page).to have_content 'Girmiş olduğunuz bilgilerde hata var.Lütfen tekrar deneyin.'
     expect(current_path).to eq new_user_path
+  end
+
+  scenario 'with empty name field' do 
+    visit new_user_path
+    expect{
+      fill_in 'İsim', with: ''
+      fill_in 'Soy İsim', with: 'ozturk'
+      fill_in 'Mail Adresi', with: 'burak@burak.com'
+      fill_in 'Şifre', with: '123456'
+      fill_in 'Şifre Tekrar', with: '123456'
+      click_button 'Beni Kaydet!'
+    }.to_not change(User, :count).by(1)
+    expect(page).to have_content 'Girmiş olduğunuz bilgilerde hata var.Lütfen tekrar deneyin.'
+    expect(current_path).to eq new_user_path 
+  end
+
+  scenario 'when passwords mismatch' do 
+    visit new_user_path
+    expect{
+      fill_in 'İsim', with: ''
+      fill_in 'Soy İsim', with: 'ozturk'
+      fill_in 'Mail Adresi', with: 'burak@burak.com'
+      fill_in 'Şifre', with: '123456'
+      fill_in 'Şifre Tekrar', with: '12345678'
+      click_button 'Beni Kaydet!'
+    }.to_not change(User, :count).by(1)
+    expect(page).to have_content 'Girmiş olduğunuz bilgilerde hata var.Lütfen tekrar deneyin.'
+    expect(current_path).to eq new_user_path 
+
   end
 end
