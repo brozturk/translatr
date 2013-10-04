@@ -14,6 +14,12 @@ module LoginMacros
     click_button 'Giriş'
   end
 
+  def fill_in_form 
+    @user = create(:user)
+    fill_in 'Mail Adresi', with: @user.email 
+    fill_in 'Şifre', with: @user.password
+  end
+
   def login_with_invalid_info
     @user = create(:user)
     visit root_path
