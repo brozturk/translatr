@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe User do
-it { should validate_presence_of(:name) } 
-it { should validate_presence_of(:last_name) }
-it { should validate_presence_of(:email) } 
+  before { @user = create (:user) }
 
-@user = FactoryGirl.create(:user) 
-its(:remember_token) { should_not be_blank} 
+  subject { @user } 
+  it { should validate_presence_of(:name) } 
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) } 
 
+  describe 'remember token' do 
+    its(:remember_token) { should_not be_blank }  
+  end
 end
