@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user up as translator' do 
+feature 'user signs up as translator' do 
   scenario 'by checking the translator checkbox' do 
    visit new_user_path 
    fill_in 'İsim', with: 'Burak'
@@ -8,6 +8,7 @@ feature 'user up as translator' do
    fill_in 'Mail Adresi', with: 'burak@burak.com'
    fill_in 'Şifre', with: '123456'
    fill_in 'Şifre Tekrar',  with: '123456'
+   check 'Çevirmen Olarak Üye Ol'
    click_button 'Beni Kaydet!'
    expect(page).to have_content 'Çevrilecekler'
    expect(page).to have_content 'burak@burak.com'
