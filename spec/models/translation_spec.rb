@@ -6,8 +6,9 @@ describe Translation do
   it { should belong_to(:user) }
 
   it 'sets the time of the answer' do 
-    @translation = create(:translation)
-
-    @translation.time_of_answer.should_not be_blank
+    translation = Translation.new(question: 'some thing that needs translating?')
+    translation.answer = 'some answer'
+    translation.set_time_of_answer
+    translation.time_of_answer.should_not be_blank
   end
 end
