@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.set_as_translator if params[:set_translator]
     if @user.save
       sign_in @user
       redirect_to user_path(@user), success: 'Üyeliğiniz başarılı bir şekilde yapıldı.'
@@ -23,6 +24,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :last_name, :email, :password, 
-                                 :password_confirmation)
+                                 :password_confirmation, :translator)
   end
 end
