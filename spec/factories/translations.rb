@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :translation do
+    question { Faker::Lorem.sentence } 
+    answer {Faker::Lorem.sentence } 
   end
 end
