@@ -6,7 +6,7 @@
 
       <h1>Hesap Oluştur</h1>      
 
-      <div class="login-social">
+     <!-- <div class="login-social">
         <p>Sosyal ağ kullanarak kayıt olun</p>
 
         <div class="twitter">
@@ -16,9 +16,9 @@
         <div class="fb">
           <a href="#" class="btn_2">Facebook ile kayıt </a>       
         </div>
-      </div>
+      </div>-->
 
-      <div class="login-fields">
+      <div class="login-fields"> 
 
         <p>Hesabınızı Oluşturun: </p>
 
@@ -48,7 +48,10 @@
       <div class="login-actions">
 
         <span class="login-checkbox">
+          <%= check_box_tag :set_translator, 1, params[:set_translator], class: "field login-checkbox" %>
+          <%= label_tag :set_translator, 'Çevirmen Olarak Üye Ol', class: "choice" %>
         </span>
+
 
         <%= f.submit 'Beni Kaydet!' , class:"login-action btn btn-primary" %>
 
