@@ -12,6 +12,7 @@ feature 'User can sign up' do
       click_button 'Beni Kaydet!'
     }.to change(User, :count).by(1) 
     expect(page).to have_content 'burak@burak.com'
+    expect(page).to_not have_content 'Çevrilecekler'
   end
 
   scenario 'with invalid email' do  
