@@ -27,5 +27,9 @@ module SessionsHelper
     self.current_user = nil 
     cookies.delete(:remember_token) 
   end
+
+  def translator?
+    current_user.translator
+  end
 end
 
