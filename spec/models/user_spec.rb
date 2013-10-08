@@ -12,7 +12,6 @@ describe User do
   it {should have_many(:texts)}
   it {should have_and_belong_to_many(:teams)} 
 
-  it {should respond_to(:team_id)}
   it {should respond_to(:translator)}
   it {should respond_to(:password_digest)} 
 
