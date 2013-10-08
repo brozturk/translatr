@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008154639) do
+ActiveRecord::Schema.define(version: 20131008184611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20131008154639) do
   create_table "teams", force: true do |t|
     t.string  "name"
     t.integer "leader_id"
+  end
+
+  create_table "teams_users", force: true do |t|
+    t.integer "team_id"
+    t.integer "user_id"
   end
 
   create_table "texts", force: true do |t|
@@ -45,7 +50,6 @@ ActiveRecord::Schema.define(version: 20131008154639) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "translator",      default: false
-    t.integer  "team_id"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
