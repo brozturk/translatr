@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if signed_in? %>
+  <% if signed_in? && !translator?%>
     <%= render 'shared/general_nav' %>
     <%= render 'shared/main_nav' %>
   <% elsif signed_in? && translator? %>
