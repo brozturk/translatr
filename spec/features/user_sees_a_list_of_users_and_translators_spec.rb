@@ -9,6 +9,6 @@ require 'spec_helper'
     visit users_path
     expect(page).to have_content user1.name
     expect(page).to have_content user2.name
-    expect { click_link 'Çevirmenler' }.to have_content translator.name
+    expect(page).to have_content translator.name
   end
 end
