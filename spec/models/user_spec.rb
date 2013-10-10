@@ -10,7 +10,7 @@ describe User do
 
   it {should have_many(:translations)}
   it {should have_many(:texts)}
-  it {should have_and_belong_to_many(:teams)} 
+  it {should have_many(:teams).through(:user_teams)} 
 
   it {should respond_to(:translator)}
   it {should respond_to(:password_digest)} 
