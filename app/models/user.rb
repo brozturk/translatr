@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
   has_many :translations
-  has_many :teams, through: :user_teams
+  has_many :user_teams
   belongs_to :team
   has_many :texts
 
