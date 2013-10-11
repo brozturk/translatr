@@ -2,10 +2,12 @@ class UserTeam < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  state_machine :state, initial: :pending do
+  state_machine :state, initial: :requested do
 
-    state :requested
+    state :accepted
   end
+
+
 
   def self.request(team, user)
     transaction do 

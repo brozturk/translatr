@@ -12,7 +12,7 @@ describe UserTeam do
   it { should belong_to(:team) } 
 
   describe 'assigning a user to a team with user_id should have pending state' do
-    its(:state) { should eq 'pending' }
+    its(:state) { should eq 'requested' }
   end
 
   describe '#membership_team should find the correct membership' do 
