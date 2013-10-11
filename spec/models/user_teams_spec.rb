@@ -15,6 +15,15 @@ describe UserTeam do
     its(:state) { should eq 'pending' }
   end
 
+  describe '#membership_team should find the correct membership' do 
+    before do
+      @request = UserTeam.request @team, @user
+    end
+    it 'should have a state of requested' do 
+      (@request.state).should eq 'requested'
+    end
+  end
+
 
 end
 
