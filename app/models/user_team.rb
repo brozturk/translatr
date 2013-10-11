@@ -16,10 +16,5 @@ class UserTeam < ActiveRecord::Base
     end
   end
 
-  def self.request(team, user)
-    transaction do 
-      create(user_id: user.id, team_id: team.id ) 
-    end
-  end
 
 end
