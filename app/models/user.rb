@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   has_many :translations
   has_many :user_teams
-  belongs_to :team
   has_many :texts
 
   has_secure_password
