@@ -14,5 +14,7 @@ describe UserTeam do
   describe 'assigning a user to a team with user_id should have pending state' do
     its(:state) { should eq 'pending' }
   end
+
+
 end
 
