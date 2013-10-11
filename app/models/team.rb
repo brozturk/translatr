@@ -13,9 +13,5 @@ class Team < ActiveRecord::Base
   
   has_many :texts, through: :users
   has_many :translations, through: :users
-
-
-
-
   
 end
