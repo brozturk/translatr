@@ -18,7 +18,7 @@ class UserTeam < ActiveRecord::Base
 
   def self.request(team, user)
     transaction do 
-      create(user_id: user.id, team_id: team.id, state: 'requested') 
+      create(user_id: user.id, team_id: team.id ) 
     end
   end
 

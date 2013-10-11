@@ -17,13 +17,12 @@ describe UserTeam do
 
   describe 'requested UserTeam' do 
     before do
-      @request = UserTeam.request @team, @user
+      (@user_team.accept)
     end
     it 'should have a state of requested' do 
-      (@request.state).should eq 'requested'
+      (@user_team.state).should eq 'accepted'
     end
   end
-
 
 end
 
