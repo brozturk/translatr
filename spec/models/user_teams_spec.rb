@@ -15,7 +15,7 @@ describe UserTeam do
     its(:state) { should eq 'requested' }
   end
 
-  describe '#membership_team should find the correct membership' do 
+  describe 'requested UserTeam' do 
     before do
       @request = UserTeam.request @team, @user
     end
