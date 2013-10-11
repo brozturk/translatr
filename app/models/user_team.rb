@@ -6,4 +6,11 @@ class UserTeam < ActiveRecord::Base
 
     state :requested
   end
+
+  def self.request(team, user)
+    transaction do 
+      create(user_id: user.id, team_id: team.id, state: 'requested') 
+    end
+  end
+
 end
