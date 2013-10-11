@@ -5,9 +5,16 @@ class UserTeam < ActiveRecord::Base
   state_machine :state, initial: :requested do
 
     state :accepted
+    state :kicked 
+    
+    event :accept do
+      transition any => :accepted
+    end
+
+    event :kick do
+      transition any => :kicked
+    end
   end
-
-
 
   def self.request(team, user)
     transaction do 
