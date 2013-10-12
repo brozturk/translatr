@@ -4,7 +4,7 @@ feature 'user logs in' do
   scenario 'with valid information' do 
     create_user_and_login
     expect(page).to have_content 'Başarılı bir şekilde giriş yapıldı!'
-    expect(current_path).to eq users_path(@user)
+    expect(current_path).to eq user_path(@user)
     expect(page).to have_content @user.email
   end
 
@@ -14,7 +14,7 @@ feature 'user logs in' do
     check('Beni Hatırla!')
     click_button 'Giriş'
     expect(page).to have_content 'Başarılı bir şekilde giriş yapıldı!'
-    expect(current_path).to eq users_path(@user) 
+    expect(current_path).to eq user_path(@user) 
     expect(page).to have_content @user.email
   end
 
