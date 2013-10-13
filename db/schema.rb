@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013114843) do
+ActiveRecord::Schema.define(version: 20131013140350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20131013114843) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "translator",      default: false
-    t.boolean  "leader"
+    t.boolean  "leader",          default: false
     t.integer  "leader_of_team"
   end
 
