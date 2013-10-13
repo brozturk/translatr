@@ -5,7 +5,8 @@ feature 'user creates a gorup' do
     create_user_and_login
     visit user_path(@user)
     click_link 'Grup Oluştur'
-    fill_in 'Grup İsmi', with: 'blaloblawgrou'
+    expect { fill_in 'Grup İsmi', with: 'blaloblawgrou'
+    click_button 'Grubu Kur' }.to change(Team, :count).by(1)
     expect(page).to have_content 'Grup Yönet'
     expect(page).to have_content 'Gruba Ekle'
     expect (page).to have_content 'Grup İşlemleri'
