@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  scope :that_is_not_a_translator, -> { where(translator: false) }
+  scope :that_is_a_translator, -> { where(translator: true) }
+
   before_create :create_remember_token
 
   has_many :translations
