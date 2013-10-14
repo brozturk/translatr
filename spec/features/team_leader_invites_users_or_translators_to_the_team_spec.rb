@@ -15,11 +15,11 @@ feature 'team leader invites users or translators to the team' do
   end
 
   scenario 'they recieve a request to join the team' do 
-    click_link 'cikis yap'
+    click_link 'Çıkış Yap'
     visit new_session_path
-    fill_in 'Email', with: @user2.email
+    fill_in 'Mail Adresi', with: @user2.email
     fill_in 'Şifre', with: @user2.password
-    click_button 'Giriş Yap'
+    click_button 'Giriş'
     visit user_path(@user2)
     click_link 'Katılım İsteği'
     click_button 'Kabul Et'
