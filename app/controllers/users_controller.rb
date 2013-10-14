@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.that_is_not_a_translator
+    @translators = User.that_is_a_translator
   end
 
   def show
