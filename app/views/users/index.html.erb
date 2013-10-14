@@ -9,7 +9,7 @@
         <strong>Kullanicilar</strong>
         <p><%= user.name %></p>
       </div>
-     <%= form_for @user_teams do |f| %>
+      <%= form_for @user_teams do |f| %>
        <%= f.hidden_field :user_id, :value => user.id %>
        <%= f.hidden_field :team_id, :value => current_user.leader_of_team %>
        <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
@@ -20,7 +20,7 @@
         <strong>Cevirmenler</strong>
         <p><%= translator.name %></p>
       </div>
-     <%= form_for @user_teams do |f| %>
+      <%= form_for @user_teams, html: { id: 'translator' } do |f| %>
        <%= f.hidden_field :user_id, :value => translator.id %>
        <%= f.hidden_field :team_id, :value => current_user.leader_of_team %>
        <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
