@@ -7,11 +7,11 @@ feature 'user creates a gorup' do
     click_link 'Grup Oluştur'
     expect { 
       fill_in 'Grup İsmi', with: 'blaloblawgrou'
-      click_button 'Grubu Kur' }.to change(Team, :count).by(1)
-    expect(@user.leader).to be_true
+      click_button 'Grubu Kur' 
+    }.to change(Team, :count).by(1)
     expect(page).to have_content 'Grup Yönet'
     expect(page).to have_content 'Gruba Ekle'
-    expect (page).to have_content 'Grup İşlemleri'
+    expect(page).to have_content 'Grup İşlemleri'
   end
 end
 
