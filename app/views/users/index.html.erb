@@ -9,12 +9,22 @@
         <strong>Kullanicilar</strong>
         <p><%= user.name %></p>
       </div>
+     <%= form_for @user_teams do |f| %>
+       <%= f.hidden_field :user_id, :value => user.id %>
+       <%= f.hidden_field :team_id, :value => current_user.leader_of_team %>
+       <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
+     <%end%>
     <%end%>
     <%= @translators.each do |translator| %>
       <div class="tab-pane fade" id="tab-2">
         <strong>Cevirmenler</strong>
         <p><%= translator.name %></p>
       </div>
+     <%= form_for @user_teams do |f| %>
+       <%= f.hidden_field :user_id, :value => translator.id %>
+       <%= f.hidden_field :team_id, :value => current_user.leader_of_team %>
+       <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
+     <%end%>
     <%end%>
   </div>
 </div>
