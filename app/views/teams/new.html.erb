@@ -12,11 +12,8 @@
 
       <div class="widget-content">
 
-        <form action="/" role="form" class="col-md-5">
-
-
           <div class="form-group">
-             <%= form_for @team do |f| %>
+            <%= form_for @team do |f| %>
                <%= f.text_field :name, :placeholder => 'Grup İsmi', class: "form-control" %>
                <%= f.submit 'Grubu Kur', class: "btn btn-default" %>
              <%end%>
