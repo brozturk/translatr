@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def index
     @users = User.that_is_not_a_translator
     @translators = User.that_is_a_translator
+    @user_teams = UserTeam.new
   end
 
   def show
