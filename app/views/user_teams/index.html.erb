@@ -1,0 +1,7 @@
+<%= group_invite_request.each do |request| %>
+  <%= form_tag  request_path, method: :put do |f| %>
+    <%= hidden_field_tag :id, request.id %>
+    <%= submit_tag 'Kabul Et', class: 'btn btn-primary' %>
+    <%= submit_tag 'Reddet', class: 'btn btn-primary' %>
+  <%end%>
+<%end%>
