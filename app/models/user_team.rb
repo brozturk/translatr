@@ -6,6 +6,7 @@ class UserTeam < ActiveRecord::Base
 
     state :accepted
     state :kicked 
+    state :denied
     
     event :accept do
       transition any => :accepted
@@ -13,6 +14,10 @@ class UserTeam < ActiveRecord::Base
 
     event :kick do
       transition any => :kicked
+    end
+
+    event :deny do
+      transition any => :denied
     end
   end
 
