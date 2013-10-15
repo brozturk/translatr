@@ -36,13 +36,18 @@
         <li class="dropdown">
 
         <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+          <% if user_has_requests? %>
+            <span class="badge badge-warning"><%= request_size %> </span>
+          <% end %>
           <i class="icon-user"></i> 
           <%= current_user.email %>
           <b class="caret"></b>
         </a>
 
         <ul class="dropdown-menu">
-          <li><a href="javascript:;">Profilim</a></li>
+          <% if user_has_requests? %> 
+            <li><span class="badge badge-warning"><%= request_size %></span> <%= link_to 'Katılım İsteği', user_teams_path %></li> 
+        <% end %>
           <li><%= link_to 'Grup Oluştur', new_team_path %></li>
           <li class="divider"></li>
           <li><%= link_to 'Çıkış Yap', signout_path, method: 'delete' %></li>
