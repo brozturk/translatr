@@ -15,11 +15,10 @@ class UserTeam < ActiveRecord::Base
     event :kick do
       transition any => :kicked
     end
-
+    
     event :deny do
       transition any => :denied
     end
   end
-
 
 end
