@@ -11,6 +11,19 @@ class UserTeamsController < ApplicationController
     end
   end
 
+  def index
+    @user_teams = UserTeam.new
+  end
+
+  def update
+    @request = UserTeam.find(params[:id])
+    if params[:commit] == 'Kabul Et'
+      @request.accept
+    elsif params[:commit] == 'Reddet'
+      @request.deny
+    end
+  end
+
   private 
 
   def user_team_params
