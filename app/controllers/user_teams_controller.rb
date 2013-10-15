@@ -19,8 +19,10 @@ class UserTeamsController < ApplicationController
     @request = UserTeam.find(params[:id])
     if params[:commit] == 'Kabul Et'
       @request.accept
+      redirect_to user_path(current_user), success: 'Gruba katılma isteğini kabul ettiniz.'
     elsif params[:commit] == 'Reddet'
       @request.deny
+      redirect_to user_teams_path, danger: 'Gruba katılma isteğini reddettiniz.'
     end
   end
 
