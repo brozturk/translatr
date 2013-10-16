@@ -27,4 +27,14 @@ module UserTeamsHelper
     end
   end
 
+  def find_team
+    keys = []
+    
+    accepted_user_teams.each do |request|
+     keys << request.team_id
+    end
+
+    @teams = Team.find(keys)
+  end
+
 end
