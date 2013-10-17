@@ -13,6 +13,9 @@ class TextsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   private
 
   def text_params
