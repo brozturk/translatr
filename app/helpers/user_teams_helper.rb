@@ -22,7 +22,7 @@ module UserTeamsHelper
   def user_has_accepted_team?
     if accepted_user_teams.size == 0 
       false
-    else
+    elsif current_user.leader || accepted_user_teams.size > 0
       true
     end
   end
