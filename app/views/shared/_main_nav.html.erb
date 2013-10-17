@@ -27,7 +27,7 @@
             </a>              
           </li>
 
-          <%if user_has_accepted_team? %> 
+          <%if user_has_accepted_team? || current_user.leader%> 
             <li class=""> 
               <%= link_to new_text_path do %>
               <i class="icon-home"></i>
