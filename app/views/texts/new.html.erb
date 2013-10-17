@@ -1,0 +1,34 @@
+<div class="row">
+
+  <div class="col-md-6">
+
+    <div class="widget stacked">
+
+      <div class="widget-header">
+        <i class="icon-tasks"></i>
+        <h3>Vertical Form</h3>
+      </div> <!-- /.widget-header -->
+
+
+      <div class="widget-content">
+
+          <div class="form-group">
+            <%= form_for @text do |f| %>
+               <%= f.text_field :title, :placeholder => 'Başlık', class: "form-control" %>
+               <%= f.text_area :text, :placeholder => 'Çevrilecekler', class: "form-control" %>
+               <%= f.submit 'Gönder', class: "btn btn-default" %>
+             <%end%>
+          </div> <!-- /.form-group -->
+
+        </form>
+
+
+      </div> <!-- /.widget-content -->
+
+
+    </div> <!-- /.widget -->
+
+  </div> <!-- /.col-md-12 -->
+
+
+</div> <!-- /.row -->
