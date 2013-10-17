@@ -15,10 +15,10 @@ feature 'user creates a text for translation' do
     fill_in 'Başlık', with: 'a title' 
     fill_in 'Çevrilecekler', with: 'a text to be translated'  
     click_button 'Gönder'
+    click_link 'Çıkış Yap'
   end
 
   scenario 'team members can view it' do 
-    click_link 'Çıkış Yap'
     visit new_session_path
     fill_in 'Mail Adresi', with: @user.name
     fill_in 'Şifre', with: @user.password
