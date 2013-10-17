@@ -27,7 +27,8 @@ feature 'user creates a text for translation' do
     fill_in 'Şifre', with: @user.password
     click_button 'Giriş'
     visit user_path(@user)
-    click_button 'Çeviri Bekleyenler'
+    expect(page).to have_content 'Çeviri Bekleyenler'
+    visit texts_path
     expect(page).to have_content 'a title'
     expect(page).to have_content 'a text to be translated'
   end
