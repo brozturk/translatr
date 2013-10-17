@@ -14,6 +14,7 @@ feature 'user creates a text for translation' do
     visit new_text_path
     fill_in 'Başlık', with: 'a title' 
     fill_in 'Çevrilecekler', with: 'a text to be translated'  
+    click_button 'Gönder'
   end
 
   scenario 'team members can view it' do 
