@@ -3,9 +3,11 @@ Translatr::Application.routes.draw do
 
   resources :users 
   resources :sessions, only: [:create, :destroy, :new]
-  resources :teams
+  resources :teams do 
+    resources :texts
+  end
+  resources :texts, only: [:new, :create]
   resources :user_teams
-  resources :texts
   root 'sessions#new'
   match 'signout', to: 'sessions#destroy', via: :delete
   match 'request', to: 'user_teams#update', via: :put
