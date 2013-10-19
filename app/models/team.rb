@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   has_many :kicked_user_teams, -> { where user_teams: { state: 'kicked' } }, foreign_key: :team_id, class_name: 'UserTeam'
   has_many :kicked_users, through: :kicked_user_teams, source: :user
   
-  has_many :texts, through: :users
-  has_many :translations, through: :users
+  has_many :texts
+  has_many :translations
   
 end
