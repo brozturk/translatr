@@ -27,21 +27,6 @@
             </a>              
           </li>
 
-          <%if user_has_accepted_team? || current_user.leader%> 
-            <li class=""> 
-              <%= link_to new_team_text_path do %>
-              <i class="icon-home"></i>
-              <span>Çeviri Yaptır</span>
-            <%end%>
-          </li>
-          
-            <li class=""> 
-              <%= link_to texts_path do %>
-              <i class="icon-home"></i>
-              <span>Çeviri Bekleyenler</span>
-            <%end%>
-          </li>
-        <%end%>
 
         </ul>
       </div> <!-- /.subnav-collapse -->
