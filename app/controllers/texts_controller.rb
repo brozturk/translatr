@@ -14,6 +14,8 @@ class TextsController < ApplicationController
   end
 
   def index
+    @team = Team.find(params[:team_id])
+    @texts = @team.texts
   end
 
   private
