@@ -1,6 +1,6 @@
 <% if user_has_accepted_team? %>
   <h2>Grup Üyeleri</h2>
-  <% find_team.each do |team| %>
+  <% current_user.teams.each do |team| %>
     <h2><%= team.name %></h2>
   <%end%>
 <%end%>
