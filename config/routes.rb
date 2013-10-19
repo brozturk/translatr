@@ -6,7 +6,6 @@ Translatr::Application.routes.draw do
   resources :teams do 
     resources :texts
   end
-  resources :texts, only: [:new, :create]
   resources :user_teams
   root 'sessions#new'
   match 'signout', to: 'sessions#destroy', via: :delete
