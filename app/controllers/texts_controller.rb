@@ -7,9 +7,9 @@ class TextsController < ApplicationController
   def create
     @text = Text.create(text_params)
     if @text.save
-      redirect_to new_text_path,  success: 'Çeviri başarılı şekilde kaydedildi.'
+      redirect_to new_team_text_path(params[:team_id]),  success: 'Çeviri başarılı şekilde kaydedildi.'
     else
-      redirect_to new_text_path, danger: 'Çeviri oluşturulması sırasında bir hata oluştu lütfen tekrar deneyin.' 
+      redirect_to new_team_text_path(params[:team_id]), danger: 'Çeviri oluşturulması sırasında bir hata oluştu lütfen tekrar deneyin.' 
     end
   end
 
