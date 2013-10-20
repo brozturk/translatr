@@ -4,7 +4,7 @@ Translatr::Application.routes.draw do
   resources :users 
   resources :sessions, only: [:create, :destroy, :new]
   resources :teams do 
-    resources :texts
+    resources :texts, shallow: true
   end
   resources :user_teams
   root 'sessions#new'
