@@ -2,10 +2,13 @@ class TextsController < ApplicationController
 
   def new
     @text = Text.new
+    @team = Team.find(params[:team_id])
   end
 
   def create
-    @text = Text.create(text_params)
+    @team = Team.find(params[:team_id])
+    @text = @team.texts.new(text_params)
+    @text.user_id = current_user.id
     if @text.save
       redirect_to new_team_text_path(params[:team_id]),  success: 'Çeviri başarılı şekilde kaydedildi.'
     else
@@ -21,7 +24,7 @@ class TextsController < ApplicationController
   private
 
   def text_params
-    params.require(:text).permit(:title, :text)
+    params.require(:text).permit(:title, :text, :team_id)
   end
 
 end
