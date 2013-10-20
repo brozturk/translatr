@@ -9,11 +9,13 @@ feature 'user creates a text for translation' do
     @team_leader.leader_of_team = @team.id
     @team_leader.leader = true
     @relationship = create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
+    @leader_relationship = create(:user_team, user_id: @team_leader.id, team_id: @team.id, state: 'accepted')
     visit new_session_path
     fill_in 'Mail Adresi', with: @team_leader.email
     fill_in 'Şifre', with: @team_leader.password
     click_button 'Giriş'
-    visit new_text_path
+    click_link @team.name
+    visit new_team_text_path(@team)
     fill_in 'Başlık', with: 'a title' 
     fill_in 'Çevrilecekler', with: 'a text to be translated'  
     click_button 'Gönder'
@@ -27,8 +29,7 @@ feature 'user creates a text for translation' do
     fill_in 'Şifre', with: @user.password
     click_button 'Giriş'
     visit user_path(@user)
-    expect(page).to have_content 'Çeviri Bekleyenler'
-    visit texts_path
+    visit team_texts_path(@team)
     expect(page).to have_content 'a title'
     expect(page).to have_content 'a text to be translated'
   end
