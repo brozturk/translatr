@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user creates a text for translation' do 
+feature 'user creates a text for translation: ' do 
   background do 
     @team_leader = create(:user)
     @user = create(:user)
@@ -32,5 +32,21 @@ feature 'user creates a text for translation' do
     visit team_texts_path(@team)
     expect(page).to have_content 'a title'
     expect(page).to have_content 'a text to be translated'
+  end
+
+  scenario 'it can be translated' do 
+    @translator = create(:user, translator: true)
+    translator_relationship = create(:user_team, user_id: @translator.id, team_id: @team.id, state: 'accepted')
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @translator.email
+    fill_in 'Şifre', with: @translator.password
+    click_button 'Giriş'
+    visit team_texts_path(@team)
+    expect(page).to have_content 'a title'
+    expect(page).to have_content 'a text to be translated'
+    click_link 'a title'
+    fill_in 'Çeviri', with: 'çevrilecek bir metin'
+    expect(page).to have_content 'çevrilecek bir metin'
+    expect(page).not_to have_field('Çeviri', :type => 'textarea')
   end
 end
