@@ -1,0 +1,14 @@
+<%= @text.title %>
+<%= @text.text %>
+
+<% if current_user.translator %>
+  <%= form_for [@team, @translation] do |f| %>
+   <%= f.text_area :translation_text, :placeholder => 'Çeviri' %>
+   <%= f.hidden_field :text_id, :value => params[:id] %>
+   <%= f.submit 'Çevir', class: 'btn btn-primary' %>
+ <%end%>
+<%end%> 
+
+<% if @text.translation %>
+  <%= @text.translation %>
+<%end%>
