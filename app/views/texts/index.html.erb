@@ -1,4 +1,4 @@
 <% @texts.each do |text| %>
-  <h2><%= text.title %></h1>
+  <h2><%= link_to text.title, text_path(text) %></h1>
   <p><%= text.text%></p>
 <%end%>
