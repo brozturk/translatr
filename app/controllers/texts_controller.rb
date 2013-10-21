@@ -20,6 +20,12 @@ class TextsController < ApplicationController
     @team = Team.find(params[:team_id])
     @texts = @team.texts
   end
+  
+  def show
+    @text = Text.find(params[:id])
+    @team = @text.team
+    @translation = Translation.new
+  end
 
   private
 
