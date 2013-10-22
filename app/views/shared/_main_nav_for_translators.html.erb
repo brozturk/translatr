@@ -14,10 +14,10 @@
         <ul class="mainnav">
 
           <li class="">
-            <a href="./index.html">
+            <%= link_to user_path(current_user) do %>
               <i class="icon-home"></i>
-              <span>Home</span>
-            </a>              
+              <span>Anasayfa</span>
+            <%end%>
           </li>
           
           <li class="">
