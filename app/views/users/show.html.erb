@@ -1,6 +1,10 @@
 <% if user_has_accepted_team? %>
-  <h2>Grup Üyeleri</h2>
-  <% current_user.teams.each do |team| %>
-    <h2><%= team.name %></h2>
-  <%end%>
+  <div class="main">
+    <div class="container">
+      <div class="row">
+        <%= render 'shared/group_info' %>
+      </div>
+    </div>
+  </div>
 <%end%>
+
