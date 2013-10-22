@@ -1,0 +1,34 @@
+<% current_user.teams.each do |team| %>
+  <div class="col-md-6">
+
+    <div class="widget stacked widget-table action-table">
+
+      <div class="widget-header">
+        <i class="icon-group"></i>
+        <h3>Grup- <%= team.name %></h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>İsim</th>
+              <th>Mail Adresi</th>
+              <th class="td-actions">Yazı Sayısı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% team.users.each do |user| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.texts.size %> </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div>
+<%end%>
