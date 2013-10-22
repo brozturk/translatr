@@ -17,7 +17,6 @@ feature 'team leader invites users or translators to the team' do
   scenario 'they accept a request to join the team' do 
     sign_in_as_second_user_and_go_to_request_page
     click_button 'Kabul Et'
-    expect(page).to have_content 'Grup Üyeleri'
     expect(page).to have_content 'Decoy Group'
   end
 
