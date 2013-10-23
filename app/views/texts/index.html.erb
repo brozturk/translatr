@@ -1,4 +1,7 @@
-<% @texts.each do |text| %>
-  <h2><%= link_to text.title, text_path(text) %></h1>
-  <p><%= text.text%></p>
-<%end%>
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <%= render 'shared/text_display' %>
+    </div>
+  </div>
+</div>

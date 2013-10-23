@@ -1,0 +1,14 @@
+<% @texts.each do |text| %>
+  <div class="col-md-6">
+    <div class="widget stacked">
+      <div class="widget-header middle">
+        <i class="icon-file"></i>
+        <h3>Çevrilecek</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content middle">
+        <%= link_to text.title, text_path(text), class: "news-item-title" %>     
+        <p><%= excerpt(text.text, text.text.split.first, radius: 150) %></p>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span6 -->
+<%end%>
