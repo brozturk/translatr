@@ -2,26 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-        <li class="active">
-          <%= link_to team_texts_path do %>
-            <span class="badge pull-right">42</span>
-            Home
-          <%end%>
-        </li>
-
-        <li><%= link_to 'Bana Ait Çevrilecekler' %> </li>
-        <li>
-          <a href="javascript:;">
-            <span class="badge pull-right">3</span>
-            Messages
-          </a>
-        </li>
-      </ul>
-  </div>
-    <div class="col-md-8">
-      <div class="row">
-      <%= render 'shared/text_display' %> 
+        <%= render 'shared/team_nav' %>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <%= render 'shared/text_display' %> 
+        </div>
+      </div>
     </div>
   </div>
 </div>
