@@ -1,35 +1,39 @@
 <div class="row">
   <div class="col-md-4">
-<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-  <li class="javascript:;">
-    <%= link_to team_texts_path do %>
-      <span class="badge pull-right">42</span>
-      Tüm Çeviriler
-    <%end%>
-  </li>
-  <li>
-    <a href="javascript:;">
-      <span class="badge pull-right">3</span>
-      Benim Çevirilerim
-    </a>
-  </li>
-  <li class = "active"><%= link_to 'Yeni Çeviri', new_team_text_path%> </li>
-</ul>
+    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+      <li class="javascript:;">
+        <%= link_to team_texts_path do %>
+          <span class="badge pull-right">42</span>
+          Tüm Çeviriler
+        <%end%>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <span class="badge pull-right">3</span>
+          Benim Çevirilerim
+        </a>
+      </li>
+      <li class = "active"><%= link_to 'Yeni Çeviri', new_team_text_path%> </li>
+    </ul>
   </div>
   <div class="col-md-8">
     <div class="widget stacked">
       <div class="widget-header">
         <i class="icon-tasks"></i>
-        <h3>Vertical Form</h3>
+        <h3>Yeni Çevrilecek Metin</h3>
       </div> <!-- /.widget-header -->
       <div class="widget-content">
-        <div class="form-group">
-          <%= form_for [@team, @text] do |f| %>
+        <%= form_for [@team, @text] do |f| %>
+          <div class="form-group">
             <%= f.text_field :title, :placeholder => 'Başlık', class: "form-control" %>
-            <%= f.text_area :text, :placeholder => 'Çevrilecekler', class: "form-control" %>
+          </div> <!-- /.form-group -->
+          <div class="form-group">
+            <%= f.text_area :text, :placeholder => 'Çevrilecekler', class: "form-control", rows: 8%>
+          </div> <!-- /.form-group -->
+          <div class="form-group">
             <%= f.submit 'Gönder', class: "btn btn-default" %>
-          <%end%>
-        </div> <!-- /.form-group -->
+          </div> <!-- /.form-group -->
+        <%end%>
       </div> <!-- /.widget-content -->
     </div> <!-- /.widget -->
   </div> <!-- /.col-md-12 -->
