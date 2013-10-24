@@ -45,7 +45,7 @@ feature 'user creates a text for translation: ' do
     expect(page).to have_content 'a title'
     expect(page).to have_content 'a text to be translated'
     click_link 'a title'
-    fill_in 'Çeviri', with: 'çevrilecek bir metin'
+    fill_in 'Çeviri Metninini Buraya Giriniz', with: 'çevrilecek bir metin'
     click_button 'Çevir'
     expect(page).to have_content 'çevrilecek bir metin'
     expect(page).not_to have_field('Çeviri', :type => 'textarea')
