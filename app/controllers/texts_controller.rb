@@ -22,15 +22,27 @@ class TextsController < ApplicationController
   end
   
   def show
-    @text = Text.find(params[:id])
+    @text = current_resource
     @team = @text.team
     @translation = Translation.new
+  end
+
+  def destroy
+    @text = current_resource
+    @team = @text.team
+    if @text.destroy
+      redirect_to team_texts_path(@team), success: 'Yazınız ve varsa çevirisi silindi'
+    end
   end
 
   private
 
   def text_params
     params.require(:text).permit(:title, :text, :team_id)
+  end
+
+  def current_resource
+    @current_resource ||= Text.find(params[:id]) if params[:id]
   end
 
 end

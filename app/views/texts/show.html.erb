@@ -1,3 +1,15 @@
+<div class = "row">
+  <div class="col-md-3 middle">
+    <div class="btn-group btn-group-justified">
+      <% if allow? :texts, :destroy, @text %>
+      <%= link_to "Yazıyı Sil", text_path(@text), method: 'delete' %>
+    <%end%>
+      <% if allow? :texts, :edit, @text %>
+      <%= link_to "Yazıyı Editle", edit_text_path(@text)%>
+    <%end%>
+     </div>
+  </div>
+</div>
 <div class = "row" >
   <div class="col-md-6">
     <div class="widget stacked">
