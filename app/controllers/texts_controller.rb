@@ -38,14 +38,14 @@ class TextsController < ApplicationController
       redirect_to team_texts_path(@team), success: 'Yazınız ve varsa çevirisi silindi'
     end
   
-    def update
-      @text = current_resource
-      if @text.update(text_params)
-        redirect_to text_path(@text), success: 'Çeviri başarılı bir şekilde editlendi'
-      end
+  def update
+    @text = current_resource
+    if @text.update(text_params)
+      redirect_to text_path(@text), success: 'Çeviri başarılı bir şekilde editlendi'
     end
-
   end
+
+end
 
   private
 
