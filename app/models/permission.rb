@@ -1,31 +1,41 @@
-class Permission < Struct.new(:user)
-  def allow?(controller, action)
-    return true if controller == 'sessions'
-    return true if controller == 'users' && action.in?(%w[new create])
+class Permission
 
+  def initialize(user)
+    allow :sessions, [:new, :create, :destroy] 
+    allow :users, [:new, :create] 
     if user && user.teams.count == 0 && !user.translator
-      return true if controller == 'users' && action.in?(%w[index show edit update])
-      return true if controller == 'teams' && action.in?(%w[new create index])
-      return true if controller == 'user_teams' && action.in?(%w[create index update])
+      allow :users, [:index, :show, :edit, :update]
+      allow :teams, [:new, :create, :index] 
+      allow :user_teams, [:create, :update, :index]
+    elsif user && !user.leader && !user.translator && user.teams.count > 0
+      allow :users, [:index, :show, :edit, :update]
+      allow :teams, [:new, :create, :index, :show] 
+      allow :user_teams, [:create, :update, :index]
+      allow :texts, [:show, :create, :new, :index]
+    elsif  user && user.teams.count > 0 && !user.translator && user.leader 
+      allow :users, [:index, :show, :edit, :update]
+      allow :teams, [:new, :create, :index, :show, :update, :edit, :destroy] 
+      allow :user_teams, [:create, :update, :index]
+      allow :texts, [:show, :create, :new, :index]
+    elsif user && user.translator 
+      allow :users, [:index, :show, :edit, :update]
+      allow :teams, [:new, :create, :index, :show] 
+      allow :user_teams, [:create, :update, :index]
+      allow :texts, [:show, :index]
+      allow :translations, [:create] 
+    end
+  end
 
-    elsif !user.leader && !user.translator && user.teams.count > 0
-      return true if controller == 'users' && action.in?(%w[index show edit update])
-      return true if controller == 'teams' && action.in?(%w[show new create index])
-      return true if controller == 'user_teams' && action.in?(%w[create index update])
-      return true if controller == 'texts' && action.in?(%w[show new create index])
+  def allow?(controller, action)
+    @allowed_actions[[controller.to_s, action.to_s]] 
+  end
 
-    elsif  user.teams.count > 0 && !user.translator && user.leader 
-      return true if controller == 'users' && action.in?(%w[index show edit update])
-      return true if controller == 'teams' && action.in?(%w[show new create index update edit destroy])
-      return true if controller == 'user_teams' && action.in?(%w[create index update])
-      return true if controller == 'texts' && action.in?(%w[show new create index])
-
-    elsif user.translator 
-      return true if controller == 'users' && action.in?(%w[index show edit update])
-      return true if controller == 'teams' && action.in?(%w[show new create index])
-      return true if controller == 'user_teams' && action.in?(%w[create index update])
-      return true if controller == 'texts' && action.in?(%w[show index])
-      return true if controller == 'translations' && action.in?(%w[create])
+  def allow(controllers, actions)
+    @allowed_actions ||= {}
+    Array(controllers).each do |controller|
+      Array(actions).each do |action|
+        @allowed_actions[[controller.to_s, action.to_s]] = true
+      end
     end
   end
 end
