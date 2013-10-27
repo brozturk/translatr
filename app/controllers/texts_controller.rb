@@ -27,12 +27,24 @@ class TextsController < ApplicationController
     @translation = Translation.new
   end
 
+  def edit
+    @text = current_resource
+  end
+
   def destroy
     @text = current_resource
     @team = @text.team
     if @text.destroy
       redirect_to team_texts_path(@team), success: 'Yazınız ve varsa çevirisi silindi'
     end
+  
+    def update
+      @text = current_resource
+      if @text.update(text_params)
+        redirect_to text_path(@text), success: 'Çeviri başarılı bir şekilde editlendi'
+      end
+    end
+
   end
 
   private
