@@ -1,4 +1,5 @@
 class TextsController < ApplicationController
+  before_filter :check_for_team, only: [:index]
 
   def new
     @text = Text.new
@@ -37,6 +38,7 @@ class TextsController < ApplicationController
     if @text.destroy
       redirect_to team_texts_path(@team), success: 'Yazınız ve varsa çevirisi silindi'
     end
+  end
   
   def update
     @text = current_resource
@@ -44,8 +46,6 @@ class TextsController < ApplicationController
       redirect_to text_path(@text), success: 'Çeviri başarılı bir şekilde editlendi'
     end
   end
-
-end
 
   private
 
@@ -57,4 +57,10 @@ end
     @current_resource ||= Text.find(params[:id]) if params[:id]
   end
 
+  def check_for_team
+    @team = Team.find(params[:team_id])
+    if !@team.in?(current_user.teams)
+      redirect_to root_url, danger: 'Bunu yapmaya izniniz yok'
+    end
+  end
 end

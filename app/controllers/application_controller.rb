@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if !current_permission.allow?(params[:controller], params[:action], current_resource)
-      redirect_to root_url, danger: 'Önce Giriş Yapmalısınız'
+      redirect_to root_url, danger: 'Bunu yapmaya izniniz yok'
     end
   end
   
