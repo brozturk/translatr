@@ -9,7 +9,10 @@ class Permission
       allow :user_teams, [:create, :update, :index]
     elsif user && !user.leader && !user.translator && user.teams.count > 0
       allow :users, [:index, :show, :edit, :update]
-      allow :teams, [:new, :create, :index, :show] 
+      allow :teams, [:new, :create, :index] 
+      allow :teams, [:show] do |team|
+        team.in?(user.teams)
+      end
       allow :user_teams, [:create, :update, :index]
       allow :texts, [:show, :create, :new, :index]
       allow :texts, [:update, :edit, :destroy] do |text|

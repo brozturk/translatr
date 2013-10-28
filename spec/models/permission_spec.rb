@@ -52,11 +52,12 @@ describe Permission do
     before do 
       @user = FactoryGirl.create(:user)
       @other_user = FactoryGirl.create(:user)
-      team = FactoryGirl.create(:team)
-      relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: team.id, state: 'accepted')
-      relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: team.id, state: 'accepted')
-      @users_text = FactoryGirl.create(:text, user_id: @user.id, team_id: team.id)
-      @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: team.id)
+      @other_team = FactoryGirl.create(:team)
+      @team = FactoryGirl.create(:team)
+      relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
+      relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @team.id, state: 'accepted')
+      @users_text = FactoryGirl.create(:text, user_id: @user.id, team_id: @team.id)
+      @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @team.id)
     end
 
     subject { Permission.new(@user) } 
@@ -73,14 +74,14 @@ describe Permission do
     it { should allow_action(:user_teams, :update) } 
     it { should allow_action(:user_teams, :create) } 
 
-    it { should allow_action(:teams, :create) } 
     it { should allow_action(:teams, :new) } 
     it { should allow_action(:teams, :create) } 
     it { should allow_action(:teams, :index) } 
+    it { should allow_action(:teams, :show, @team) } 
 
     it { should allow_action(:texts, :create) } 
-    it { should allow_action(:texts, :show) } 
     it { should allow_action(:texts, :index) } 
+    it { should allow_action(:texts, :show) } 
     it { should allow_action(:texts, :update, @users_text) } 
     it { should allow_action(:texts, :destroy , @users_text) } 
     it { should allow_action(:texts, :edit , @users_text) } 
@@ -93,6 +94,8 @@ describe Permission do
 
     it { should_not allow_action(:teams, :update) } 
     it { should_not allow_action(:teams, :destroy) } 
+    it { should_not allow_action(:teams, :show) } 
+    it { should_not allow_action(:teams, :show, @other_team) } 
 
     it { should_not allow_action(:texts, :update) } 
     it { should_not allow_action(:texts, :destroy) } 
