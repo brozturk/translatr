@@ -26,6 +26,7 @@ class UserTeamsController < ApplicationController
     end
   end
 
+
   private 
 
   def user_team_params
