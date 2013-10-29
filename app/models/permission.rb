@@ -14,9 +14,12 @@ class Permission
         team.in?(user.teams)
       end
       allow :user_teams, [:create, :update, :index]
-      allow :texts, [:show, :create, :new, :index]
+      allow :texts, [ :create, :new, :index]
       allow :texts, [:update, :edit, :destroy] do |text|
         text.user_id == user.id
+      end
+      allow :texts, [:show] do |text|
+        text.team.in?(user.teams)
       end
     elsif  user && user.teams.count > 0 && !user.translator && user.leader 
       allow :users, [:index, :show, :edit, :update]
@@ -25,15 +28,21 @@ class Permission
         team.leader_id == user.id
       end
       allow :user_teams, [:create, :update, :index]
-      allow :texts, [:show, :create, :new, :index]
+      allow :texts, [ :create, :new, :index]
       allow :texts, [:update, :edit, :destroy] do |text|
         text.user_id == user.id
+      end
+      allow :texts, [:show] do |text|
+        text.team.in?(user.teams)
       end
     elsif user && user.translator 
       allow :users, [:index, :show, :edit, :update]
       allow :teams, [:new, :create, :index, :show] 
       allow :user_teams, [:create, :update, :index]
-      allow :texts, [:show, :index]
+      allow :texts, [:index]
+      allow :texts, [:show] do |text|
+        text.team.in?(user.teams)
+      end
       allow :translations, [:create] 
     end
   end

@@ -58,6 +58,7 @@ describe Permission do
       relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @team.id, state: 'accepted')
       @users_text = FactoryGirl.create(:text, user_id: @user.id, team_id: @team.id)
       @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @team.id)
+      @other_team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @other_team.id)
     end
 
     subject { Permission.new(@user) } 
@@ -81,7 +82,8 @@ describe Permission do
 
     it { should allow_action(:texts, :create) } 
     it { should allow_action(:texts, :index) } 
-    it { should allow_action(:texts, :show) } 
+    it { should allow_action(:texts, :show, @users_text) } 
+    it { should allow_action(:texts, :show, @other_text) } 
     it { should allow_action(:texts, :update, @users_text) } 
     it { should allow_action(:texts, :destroy , @users_text) } 
     it { should allow_action(:texts, :edit , @users_text) } 
@@ -100,6 +102,8 @@ describe Permission do
     it { should_not allow_action(:texts, :update) } 
     it { should_not allow_action(:texts, :destroy) } 
     it { should_not allow_action(:texts, :edit) } 
+    it { should_not allow_action(:texts, :show) } 
+    it { should_not allow_action(:texts, :show, @other_team_text) } 
     it { should_not allow_action(:texts, :update, @other_text) } 
     it { should_not allow_action(:texts, :destroy , @other_text) } 
     it { should_not allow_action(:texts, :edit , @other_text) } 
@@ -118,6 +122,7 @@ describe Permission do
       @other_team = FactoryGirl.create(:team)
       @users_text = FactoryGirl.create(:text, user_id: @user.id, team_id: @users_team.id)
       @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @users_team.id)
+      @other_team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @other_team.id)
     end
 
     subject { Permission.new(@user) } 
@@ -143,8 +148,9 @@ describe Permission do
     it { should allow_action(:teams, :destroy, @users_team) } 
 
     it { should allow_action(:texts, :create) } 
-    it { should allow_action(:texts, :show) } 
     it { should allow_action(:texts, :index) } 
+    it { should allow_action(:texts, :show, @users_text) } 
+    it { should allow_action(:texts, :show, @other_text) } 
     it { should allow_action(:texts, :update, @users_text) } 
     it { should allow_action(:texts, :destroy , @users_text) } 
     it { should allow_action(:texts, :edit , @users_text) } 
@@ -165,6 +171,8 @@ describe Permission do
     it { should_not allow_action(:texts, :update) } 
     it { should_not allow_action(:texts, :destroy) } 
     it { should_not allow_action(:texts, :edit) } 
+    it { should_not allow_action(:texts, :show) } 
+    it { should_not allow_action(:texts, :show, @other_team_text) } 
     it { should_not allow_action(:texts, :update, @other_text) } 
     it { should_not allow_action(:texts, :destroy , @other_text) } 
     it { should_not allow_action(:texts, :edit , @other_text) } 
@@ -173,10 +181,14 @@ describe Permission do
   describe 'user as a translator' do 
 
     before do 
-      @user = FactoryGirl.create(:user, translator: true, leader: false)
-      team = FactoryGirl.create(:team)
-      team.leader_id = @user.id
-      relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: team.id, state: 'accepted')
+      @user = FactoryGirl.create(:user, leader: false, translator: true)
+      @other_user = FactoryGirl.create(:user)
+      @users_team = FactoryGirl.create(:team)
+      relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: @users_team.id, state: 'accepted')
+      relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @users_team.id, state: 'accepted')
+      @other_team = FactoryGirl.create(:team)
+      @team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @users_team.id)
+      @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @other_team.id)
     end
 
     subject { Permission.new(@user) } 
@@ -200,7 +212,7 @@ describe Permission do
     it { should allow_action(:teams, :index) } 
     it { should allow_action(:teams, :show) } 
 
-    it { should allow_action(:texts, :show) } 
+    it { should allow_action(:texts, :show, @team_text) } 
     it { should allow_action(:texts, :index) } 
 
     it { should allow_action(:translations, :create) } 
@@ -209,6 +221,8 @@ describe Permission do
     it { should_not allow_action(:texts, :update) } 
     it { should_not allow_action(:texts, :edit) } 
     it { should_not allow_action(:texts, :new) } 
+    it { should_not allow_action(:texts, :show) } 
+    it { should_not allow_action(:texts, :show, @other_text) } 
   
     it { should_not allow_action(:teams, :edit) } 
     it { should_not allow_action(:teams, :update) } 
