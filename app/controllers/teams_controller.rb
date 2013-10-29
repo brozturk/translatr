@@ -2,6 +2,9 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
   end
+
+  def show
+  end
   
   def create
     @team = Team.new(team_params)
@@ -20,4 +23,5 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :leader_id)
   end
+
 end
