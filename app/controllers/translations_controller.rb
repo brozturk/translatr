@@ -24,6 +24,6 @@ class TranslationsController < ApplicationController
   end
 
   def current_resource
-    @current_resource ||= Translation.find(params[:id])
+    @current_resource ||= Translation.find(params[:id]) if params[:id]
   end
 end
