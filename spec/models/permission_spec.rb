@@ -137,7 +137,8 @@ describe Permission do
 
     it { should allow_action(:user_teams, :index) } 
     it { should allow_action(:user_teams, :create) } 
-    it { should allow_action(:user_teams, :update) } 
+    it { should allow_action(:user_teams, :update, @users_team.leader_id) } 
+    it { should allow_action(:user_teams, :destroy, @users_team.leader_id) } 
 
     it { should allow_action(:teams, :new) } 
     it { should allow_action(:teams, :show) } 
@@ -176,6 +177,11 @@ describe Permission do
     it { should_not allow_action(:texts, :update, @other_text) } 
     it { should_not allow_action(:texts, :destroy , @other_text) } 
     it { should_not allow_action(:texts, :edit , @other_text) } 
+    
+    it { should_not allow_action(:user_teams, :update, @other_team.leader_id) } 
+    it { should_not allow_action(:user_teams, :destroy, @other_team.leader_id) } 
+    it { should_not  allow_action(:user_teams, :update) } 
+    it { should_not allow_action(:user_teams, :destroy) } 
   end
 
   describe 'user as a translator' do 
