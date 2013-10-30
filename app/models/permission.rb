@@ -44,6 +44,9 @@ class Permission
         text.team.in?(user.teams)
       end
       allow :translations, [:create] 
+      allow :translations, [:destroy, :update, :edit] do |translation|
+        translation.in?(user.translations)
+      end
     end
   end
 

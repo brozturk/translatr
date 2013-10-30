@@ -189,6 +189,9 @@ describe Permission do
       @other_team = FactoryGirl.create(:team)
       @team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @users_team.id)
       @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @other_team.id)
+      @other_team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @users_team.id)
+      @translation = FactoryGirl.create(:translation, user_id: @user.id,  team_id: @users_team.id, text_id: @team_text.id)
+      @other_translation = FactoryGirl.create(:translation, user_id: @other_user.id,  team_id: @users_team.id, text_id: @other_team_text.id)
     end
 
     subject { Permission.new(@user) } 
@@ -216,6 +219,9 @@ describe Permission do
     it { should allow_action(:texts, :index) } 
 
     it { should allow_action(:translations, :create) } 
+    it { should allow_action(:translations, :destroy, @translation) } 
+    it { should allow_action(:translations, :update, @translation) } 
+    it { should allow_action(:translations, :edit, @translation) } 
 
     it { should_not allow_action(:texts, :create) } 
     it { should_not allow_action(:texts, :update) } 
@@ -227,5 +233,12 @@ describe Permission do
     it { should_not allow_action(:teams, :edit) } 
     it { should_not allow_action(:teams, :update) } 
     it { should_not allow_action(:teams, :destroy) } 
+
+    it { should_not allow_action(:translations, :destroy) } 
+    it { should_not allow_action(:translations, :update) } 
+    it { should_not allow_action(:translations, :edit) } 
+    it { should_not allow_action(:translations, :destroy, @other_translation) } 
+    it { should_not allow_action(:translations, :update, @other_translation) } 
+    it { should_not allow_action(:translations, :edit, @other_translation) } 
   end
 end
