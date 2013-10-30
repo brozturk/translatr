@@ -54,6 +54,25 @@ feature 'Translator is restricted' do
   end
 
   scenario 'when trying do delete a translation that they do not own' do
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @translator.email
+    fill_in 'Şifre', with: @translator.password
+    click_button 'Giriş'
+    visit team_texts_path(@team)
+    click_link @other_team_text.title
+    expect(page).not_to have_content 'Çeviriyi Sil'
+    expect(page).not_to have_content 'Çeviriyi Editle'
+    visit edit_translation_path(@other_translation)
+    expect(page).to have_content 'Bunu yapmaya izniniz yok'
+    visit team_texts_path(@team)
+    click_link @text.title
+    expect(page).to have_content 'Çeviriyi Sil'
+    expect(page).to have_content 'Çeviriyi Editle'
+    click_link 'Çeviriyi Sil'
+    expect(page).not_to have_content 'Bunu yapmaya izniniz yok'
+    expect(page).not_to have_content @translation.translation_text
+    expect(page).to have_content @text.title
+    expect(page).to have_content @text.text
 
   end
 end

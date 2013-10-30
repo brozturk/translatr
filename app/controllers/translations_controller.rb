@@ -16,6 +16,12 @@ class TranslationsController < ApplicationController
     @text = @translation.text
   end
 
+  def destroy
+    @translation = current_resource
+    if @translation.destroy
+      redirect_to text_path(@translation.text), success: 'Çeviri başarıyle silindi'
+    end
+  end
 
   private
   
