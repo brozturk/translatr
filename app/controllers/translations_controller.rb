@@ -23,6 +23,13 @@ class TranslationsController < ApplicationController
     end
   end
 
+  def update
+    @translation = current_resource
+    if @translation.update(translation_params)
+      redirect_to text_path(@translation.text), success: 'Çeviri başarıyla düzenlendi'
+    end
+  end
+
   private
   
   def translation_params

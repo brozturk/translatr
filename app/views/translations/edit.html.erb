@@ -23,3 +23,25 @@
     </div> <!-- /widget -->
   </div> <!-- /span6 -->
 </div> <!-- /widget-content -->
+
+<div class = 'row' >
+  <div class="col-md-12">
+    <div class="widget stacked">
+      <div class="widget-header middle">
+        <i class="icon-file"></i>
+        <h3>Çeviri</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content middle">
+        <%= form_for :translation, url: translation_path(@translation), method: :patch do |f| %>
+          <div class = "form-group">
+            <%= f.text_area :translation_text, :placeholder => 'Düzenlenmiş Çeviriyi Buraya Gir', class: 'form-control', rows: 8 %>
+          </div>
+          <div class = "form-group">
+            <%= f.submit 'Düzenle', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <%end%>
+    </div> <!-- /span6 -->
+  </div>
+</div>
+</div>
