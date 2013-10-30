@@ -11,13 +11,19 @@ class TranslationsController < ApplicationController
     end
   end
 
-  def index
-
+  def edit
+    @translation = current_resource
+    @text = @translation.text
   end
+
 
   private
   
   def translation_params
     params.require(:translation).permit(:team_id, :text_id, :translation_text)
+  end
+
+  def current_resource
+    @current_resource ||= Translation.find(params[:id])
   end
 end

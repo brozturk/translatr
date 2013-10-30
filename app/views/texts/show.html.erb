@@ -7,6 +7,12 @@
       <% if allow? :texts, :edit, @text %>
       <%= link_to "Yazıyı Editle", edit_text_path(@text)%>
     <%end%>
+      <% if allow? :translations, :destroy, @text.translation %>
+      <%= link_to "Çeviriyi Sil", translation_path(@text.translation), method: 'delete' %>
+    <%end%>
+      <% if allow? :translations, :edit, @text.translation %>
+      <%= link_to "Çeviriyi Editle", edit_translation_path(@text.translation)%>
+    <%end%>
      </div>
   </div>
 </div>

@@ -1,0 +1,25 @@
+<div class = "row" >
+  <div class="col-md-6">
+    <div class="widget stacked">
+      <div class="widget-header middle">
+        <i class="icon-file"></i>
+        <h3><%= @text.title %></h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content middle">
+        <%= @text.text %>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span6 -->
+
+  <div class="col-md-6">
+    <div class="widget stacked">
+      <div class="widget-header middle">
+        <i class="icon-file"></i>
+        <h3>Çeviri</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content middle">
+        <%= @translation.translation_text %>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span6 -->
+</div> <!-- /widget-content -->
