@@ -28,8 +28,8 @@ class Permission
         team.leader_id == user.id
       end
       allow :user_teams, [:create, :index]
-      allow :user_teams, [:update, :destroy] do |id|
-        id == user.id
+      allow :user_teams, [:update, :destroy] do |relationship|
+        relationship.team.leader_id == user.id
       end
       allow :texts, [ :create, :new, :index]
       allow :texts, [:update, :edit, :destroy] do |text|

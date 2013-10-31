@@ -114,12 +114,12 @@ describe Permission do
     before do 
       @user = FactoryGirl.create(:user, leader: true)
       @other_user = FactoryGirl.create(:user)
-      @users_team = FactoryGirl.create(:team)
-      @users_team.leader_id = @user.id
+      @users_team = FactoryGirl.create(:team, leader_id: @user.id)
       @user.leader_of_team = @users_team.id
-      relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: @users_team.id, state: 'accepted')
-      relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @users_team.id, state: 'accepted')
+      @relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: @users_team.id, state: 'accepted')
+      @relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @users_team.id, state: 'accepted')
       @other_team = FactoryGirl.create(:team)
+      @other_relationship = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @other_team.id, state: 'accepted')
       @users_text = FactoryGirl.create(:text, user_id: @user.id, team_id: @users_team.id)
       @other_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @users_team.id)
       @other_team_text = FactoryGirl.create(:text, user_id: @other_user.id,  team_id: @other_team.id)
@@ -137,8 +137,8 @@ describe Permission do
 
     it { should allow_action(:user_teams, :index) } 
     it { should allow_action(:user_teams, :create) } 
-    it { should allow_action(:user_teams, :update, @users_team.leader_id) } 
-    it { should allow_action(:user_teams, :destroy, @users_team.leader_id) } 
+    it { should allow_action(:user_teams, :update, @relationship2) } 
+    it { should allow_action(:user_teams, :destroy, @relationship2) } 
 
     it { should allow_action(:teams, :new) } 
     it { should allow_action(:teams, :show) } 
@@ -178,8 +178,8 @@ describe Permission do
     it { should_not allow_action(:texts, :destroy , @other_text) } 
     it { should_not allow_action(:texts, :edit , @other_text) } 
     
-    it { should_not allow_action(:user_teams, :update, @other_team.leader_id) } 
-    it { should_not allow_action(:user_teams, :destroy, @other_team.leader_id) } 
+    it { should_not allow_action(:user_teams, :update, @other_relationship) } 
+    it { should_not allow_action(:user_teams, :destroy, @other_relationship) } 
     it { should_not  allow_action(:user_teams, :update) } 
     it { should_not allow_action(:user_teams, :destroy) } 
   end
