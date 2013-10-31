@@ -137,7 +137,7 @@ describe Permission do
 
     it { should allow_action(:user_teams, :index) } 
     it { should allow_action(:user_teams, :create) } 
-    it { should allow_action(:user_teams, :update, @relationship2) } 
+    it { should allow_action(:user_teams, :update) } 
     it { should allow_action(:user_teams, :destroy, @relationship2) } 
 
     it { should allow_action(:teams, :new) } 
@@ -178,9 +178,7 @@ describe Permission do
     it { should_not allow_action(:texts, :destroy , @other_text) } 
     it { should_not allow_action(:texts, :edit , @other_text) } 
     
-    it { should_not allow_action(:user_teams, :update, @other_relationship) } 
     it { should_not allow_action(:user_teams, :destroy, @other_relationship) } 
-    it { should_not  allow_action(:user_teams, :update) } 
     it { should_not allow_action(:user_teams, :destroy) } 
   end
 
