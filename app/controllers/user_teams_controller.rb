@@ -14,7 +14,7 @@ class UserTeamsController < ApplicationController
   end
 
   def update
-    @request = UserTeam.find(params[:id])
+    @request = current_resource
     if params[:commit] == 'Kabul Et'
       @request.accept
       redirect_to user_path(current_user), success: 'Gruba katılma isteğini kabul ettiniz.'
