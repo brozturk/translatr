@@ -1,0 +1,34 @@
+<div class="col-md-6">
+
+  <div class="widget stacked widget-table action-table">
+
+    <div class="widget-header">
+      <i class="icon-group"></i>
+      <h3>Grup Yönet</h3>
+    </div> <!-- /widget-header -->
+
+    <div class="widget-content middle">
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class = 'middle'>İsim</th>
+            <th class = 'middle'>Mail Adresi</th>
+            <th class="td-actions middle">İşlem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @relationships.each do |relationship| %>
+            <% unless current_user == relationship.user %>
+              <tr>
+                <td><%= relationship.user.name %></td>
+                <td><%= relationship.user.email %></td>
+                <td><%= link_to 'Gruptan At', user_team_path(relationship), method: :delete, class: 'btn btn-primary' %> </td>
+              </tr>
+            <%end%>
+          <%end%>
+        </tbody>
+      </table>
+    </div> <!-- /widget-content -->
+  </div> <!-- /widget -->
+</div>

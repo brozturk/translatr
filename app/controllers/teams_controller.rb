@@ -4,6 +4,8 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = current_resource
+    @relationships = UserTeam.where(team_id: @team.id, state: 'accepted')
   end
   
   def create
@@ -22,6 +24,10 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :leader_id)
+  end
+
+  def current_resource
+    @current_resource ||= Team.find(params[:id]) if params[:id] 
   end
 
 end

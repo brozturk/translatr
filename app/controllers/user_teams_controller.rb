@@ -1,6 +1,4 @@
 class UserTeamsController < ApplicationController
-  def new
-  end
 
   def create
     @request = UserTeam.new(user_team_params)
@@ -26,10 +24,22 @@ class UserTeamsController < ApplicationController
     end
   end
 
+  def destroy
+    @relationship = current_resource
+    if @relationship.destroy
+      redirect_to team_path(@relationship.team), success: "#{@relationship.user.name} Gruptan Atıldı"
+    else
+      redirect_to team_path(@relationship.team), danger: 'Bir Hata Oluştu Lütfen Tekrar Deneyin'
+    end
+  end
 
   private 
 
   def user_team_params
     params.require(:user_team).permit(:user_id, :team_id, :leader_of_team)
+  end
+
+  def current_resource
+    @current_resource ||= UserTeam.find(params[:id]) if params[:id]
   end
 end

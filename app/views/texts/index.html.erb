@@ -1,3 +1,7 @@
+<% if allow? :teams, :show, @team %>
+  <%= link_to 'Grubu Yönet', team_path(@team) %>
+<%end%>
+
 <div class="main">
   <div class="container">
     <div class="row">
