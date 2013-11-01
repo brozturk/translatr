@@ -41,6 +41,7 @@ group :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'guard-rspec'
+  gem 'email_spec'
 end
 
 group :test, :development do 
