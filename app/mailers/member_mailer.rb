@@ -23,6 +23,16 @@ class MemberMailer < ActionMailer::Base
     end
     
     mail :to =>@mails, :subject => "Metin Değişikliği Yapıldı"
+  end
 
+  def translation_creation_notification(translation)
+    @translation = translation
+    
+    @mails = []
+    @translation.team.users.each do |user|
+      @mails << (user.email)
+    end
+    
+    mail :to =>@mails, :subject => "Yeni Çeviri"
   end
 end
