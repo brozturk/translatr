@@ -7,9 +7,9 @@ describe Permissions::TeamMemberPermission do
     let!(:team) { create(:team) }
     let!(:relationship) { create(:user_team, user_id: user.id, team_id: team.id, state: 'accepted') }
     let!(:relationship2) { create(:user_team, user_id: other_user.id, team_id: team.id, state: 'accepted') } 
-    let!(:users_text) { create(:text, user_id: user.id, team_id: team.id) } 
-    let!(:other_text) { create(:text, user_id: other_user.id,  team_id: team.id) } 
-    let!(:other_team_text) { create(:text, user_id: other_user.id,  team_id: other_team.id) } 
+    let!(:users_text) { build(:text, user_id: user.id, team_id: team.id) } 
+    let!(:other_text) { build(:text, user_id: other_user.id,  team_id: team.id) } 
+    let!(:other_team_text) { build(:text, user_id: other_user.id,  team_id: other_team.id) } 
     subject { Permissions.permission_for(user) } 
 
     it 'allows sessions' do 

@@ -8,10 +8,10 @@ describe Permissions::TranslatorPermission do
     let!(:relationship2) { create(:user_team, user_id: other_user.id, team_id: users_team.id, state: 'accepted') } 
     let!(:other_team) { create(:team) } 
     let!(:team_text) { create(:text, user_id: other_user.id,  team_id: users_team.id) }
-    let!(:other_text) { create(:text, user_id: other_user.id,  team_id: other_team.id) } 
-    let!(:other_team_text) { create(:text, user_id: other_user.id,  team_id: users_team.id) } 
+    let!(:other_text) { build(:text, user_id: other_user.id,  team_id: other_team.id) } 
+    let!(:other_team_text) { build(:text, user_id: other_user.id,  team_id: users_team.id) } 
     let!(:translation) { create(:translation, user_id: user.id,  team_id: users_team.id, text_id: team_text.id) } 
-    let!(:other_translation) { create(:translation, user_id: other_user.id,  team_id: users_team.id, text_id: other_team_text.id) } 
+    let!(:other_translation) { build(:translation, user_id: other_user.id,  team_id: users_team.id, text_id: other_team_text.id) } 
     subject { Permissions.permission_for(user) } 
 
     it 'allows sessions' do 
