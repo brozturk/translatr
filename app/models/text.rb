@@ -13,10 +13,10 @@ class Text < ActiveRecord::Base
   private
 
   def send_notification_email
-    MemberMailer.text_creation_notification(self.team.users, self, self.user).deliver
+    MemberMailer.text_creation_notification(self).deliver
   end
 
   def send_update_notification
-    MemberMailer.text_update_notification(self.team.users, self, self.user).deliver
+    MemberMailer.text_update_notification(self).deliver
   end
 end

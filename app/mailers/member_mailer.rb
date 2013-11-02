@@ -1,10 +1,10 @@
 class MemberMailer < ActionMailer::Base
   default from: "from@example.com"
 
-  def text_creation_notification(users, text, text_creator)
-    @users = users
+  def text_creation_notification(text)
     @text = text
-    @text_creator = text_creator
+    @users = @text.team.users
+
     @mails = []
     @users.each do |user|
       @mails << (user.email)
@@ -13,10 +13,10 @@ class MemberMailer < ActionMailer::Base
     mail :to =>@mails, :subject => "Yeni Metin Oluşturuldu"
   end
 
-  def text_update_notification(users, text, person_who_updated)
-    @users = users
+  def text_update_notification(text)
     @text = text
-    @person_who_updated = person_who_updated
+    @users = @text.team.users
+
     @mails = []
     @users.each do |user|
       @mails << (user.email)
@@ -50,7 +50,6 @@ class MemberMailer < ActionMailer::Base
   def group_invitation_notification(request)
     @request = request
     @user = @request.user
-    @leader = User.find(@request.team.leader_id)
 
     mail :to =>@user.email, :subject => "Davet!"
   end
