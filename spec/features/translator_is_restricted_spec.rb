@@ -6,14 +6,20 @@ feature 'Translator is restricted' do
       @translator = FactoryGirl.create(:user, translator: true, leader: false)
       @other_translator = FactoryGirl.create(:user, translator: true, leader: false)
       @other_user = FactoryGirl.create(:user)
+      @random_user = FactoryGirl.create(:user)
+
       @team = FactoryGirl.create(:team)
       @other_team = FactoryGirl.create(:team)
+
       relationship = FactoryGirl.create(:user_team, user_id: @translator.id, team_id: @team.id, state: 'accepted')
       relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @team.id, state: 'accepted')
       realtionship3 = FactoryGirl.create(:user_team, user_id: @other_translator.id, team_id: @team.id, state: 'accepted')
+      realtionship4 = FactoryGirl.create(:user_team, user_id: @random_user.id, team_id: @other_team.id, state: 'accepted')
+
       @text = FactoryGirl.create(:text, user_id: @other_user.id, team_id: @team.id)
-      @other_text = FactoryGirl.create(:text, user_id: @other_user.id, team_id: @other_team.id)
+      @other_text = FactoryGirl.create(:text, user_id: @random_user.id, team_id: @other_team.id)
       @other_team_text = FactoryGirl.create(:text, user_id: @other_user.id, team_id: @team.id)
+
       @translation = FactoryGirl.create(:translation, text_id: @text.id, user_id: @translator.id, team_id: @team.id)
       @other_translation = FactoryGirl.create(:translation, text_id: @other_team_text.id, user_id: @other_translator.id, team_id: @team.id)
   end
