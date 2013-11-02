@@ -35,4 +35,16 @@ class MemberMailer < ActionMailer::Base
     
     mail :to =>@mails, :subject => "Yeni Çeviri"
   end
+  
+  def translation_update_notification(translation)
+    @translation = translation
+    
+    @mails = []
+    @translation.team.users.each do |user|
+      @mails << (user.email)
+    end
+    
+    mail :to =>@mails, :subject => "Çeviri Değişikliği Yaplıdı"
+  end
 end
+

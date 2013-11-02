@@ -57,4 +57,20 @@ feature 'user gets an email when' do
     expect(open_last_email).to be_delivered_to [@user.email, @team_leader.email, @translator.email]
     expect(open_last_email).to have_body_text (/yeni çeviri oluşturuldu./)
   end
+
+  scenario 'a translation has been updated' do 
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @translator.email
+    fill_in 'Şifre', with: @translator.password
+    click_button 'Giriş'
+    click_link @team.name
+    visit team_texts_path(@team)
+    click_link @other_text.title
+    click_link 'Çeviriyi Editle'
+    fill_in 'Düzenlenmiş Çeviriyi Buraya Gir', with: 'new translation'
+    click_button 'Düzenle'
+    expect(open_last_email).to be_delivered_to [@user.email, @team_leader.email, @translator.email]
+    expect(open_last_email).to have_body_text (/çeviride değişiklik yapıldı/)
+  end
+  
 end
