@@ -5,6 +5,7 @@ feature 'user gets an email when' do
     @team_leader = create(:user, leader: true)
     @user = create(:user)
     @translator = create(:user, translator: true)
+    @invited_user = create(:user)
     @team = create(:team, leader_id: @team_leader.id)
     @team_leader.leader_of_team = @team.id
     @relationship = create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
@@ -73,4 +74,9 @@ feature 'user gets an email when' do
     expect(open_last_email).to have_body_text (/çeviride değişiklik yapıldı/)
   end
   
+  scenario 'a user has been invited to join a group' do 
+    @invite = create(:user_team, user_id: @invited_user.id, team_id: @team.id)
+    expect(open_last_email).to be_delivered_to @invited_user.email
+    expect(open_last_email).to have_body_text (/gruba davet edildiniz/)
+  end
 end

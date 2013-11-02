@@ -1,4 +1,6 @@
 class UserTeam < ActiveRecord::Base
+  after_create :send_invite_email
+
   belongs_to :user
   belongs_to :team
 
@@ -21,4 +23,9 @@ class UserTeam < ActiveRecord::Base
     end
   end
 
+  private
+
+  def send_invite_email
+    MemberMailer.group_invitation_notification(self).deliver
+  end
 end

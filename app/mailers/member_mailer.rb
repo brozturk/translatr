@@ -46,5 +46,13 @@ class MemberMailer < ActionMailer::Base
     
     mail :to =>@mails, :subject => "Çeviri Değişikliği Yaplıdı"
   end
+
+  def group_invitation_notification(request)
+    @request = request
+    @user = @request.user
+    @leader = User.find(@request.team.leader_id)
+
+    mail :to =>@user.email, :subject => "Davet!"
+  end
 end
 
