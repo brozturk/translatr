@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 gem 'font-awesome-rails'
 gem 'state_machine'
 gem 'figaro'
+gem 'will_paginate'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
