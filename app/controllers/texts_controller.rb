@@ -19,7 +19,7 @@ class TextsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    @texts = @team.texts.paginate(page: params[:page], per_page: 4)
+    @texts = @team.texts.paginate(page: params[:page], per_page: 6)
   end
   
   def show
