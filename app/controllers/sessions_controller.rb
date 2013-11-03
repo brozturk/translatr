@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :redirect_if_signed_in, only: [:new]
+
   def new
   end
 
@@ -15,5 +17,11 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to root_path, success: 'Başarılı bir şekilde çıkış yapıldı.' 
+  end
+
+  private
+
+  def redirect_if_signed_in
+    redirect_to user_path(current_user) if signed_in?
   end
 end

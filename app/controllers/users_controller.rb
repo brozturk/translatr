@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :redirect_if_signed_in, only: [:new]
+
   def new
     @user = User.new
   end
@@ -29,5 +31,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :last_name, :email, :password, 
                                  :password_confirmation, :translator)
+  end
+
+  def redirect_if_signed_in
+    redirect_to user_path(current_user) if signed_in?
   end
 end
