@@ -1,34 +1,51 @@
-<div class="col-md-6">
-
-  <div class="widget stacked widget-table action-table">
-
-    <div class="widget-header">
-      <i class="icon-group"></i>
-      <h3>Grup Yönet</h3>
-    </div> <!-- /widget-header -->
-
-    <div class="widget-content middle">
-
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th class = 'middle'>İsim</th>
-            <th class = 'middle'>Mail Adresi</th>
-            <th class="td-actions middle">İşlem</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @relationships.each do |relationship| %>
-            <% unless current_user == relationship.user %>
+<div class="row">
+  <div class="col-md-4">
+    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+      <li class="javascript:;">
+        <%= link_to team_texts_path(@team) do %>
+          <span class="badge pull-right">42</span>
+          Tüm Çeviriler
+        <%end%>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <span class="badge pull-right">3</span>
+          Benim Çevirilerim
+        </a>
+      </li>
+      <li><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
+      <% if allow? :teams, :show, @team %>
+        <li class = "active" ><%= link_to 'Grubu Yönet', team_path(@team) %></li>
+      <%end%>
+    </ul>
+  </div>
+    <div class="col-md-8">
+      <div class="widget stacked widget-table action-table">
+        <div class="widget-header">
+          <i class="icon-group"></i>
+          <h3>Grup Yönet</h3>
+        </div> <!-- /widget-header -->
+        <div class="widget-content middle">
+          <table class="table table-striped table-bordered">
+            <thead>
               <tr>
-                <td><%= relationship.user.name %></td>
-                <td><%= relationship.user.email %></td>
-                <td><%= link_to 'Gruptan At', user_team_path(relationship), method: :delete, class: 'btn btn-primary' %> </td>
+                <th class = 'middle'>İsim</th>
+                <th class = 'middle'>Mail Adresi</th>
+                <th class="td-actions middle">İşlem</th>
               </tr>
-            <%end%>
-          <%end%>
-        </tbody>
-      </table>
-    </div> <!-- /widget-content -->
-  </div> <!-- /widget -->
-</div>
+            </thead>
+            <tbody>
+              <% @relationships.each do |relationship| %>
+                <% unless current_user == relationship.user %>
+                  <tr>
+                    <td><%= relationship.user.name %></td>
+                    <td><%= relationship.user.email %></td>
+                    <td><%= link_to 'Gruptan At', user_team_path(relationship), method: :delete, class: 'btn btn-primary' %> </td>
+                  </tr>
+                <%end%>
+              <%end%>
+            </tbody>
+          </table>
+        </div> <!-- /widget-content -->
+      </div> <!-- /widget -->
+    </div>

@@ -1,12 +1,13 @@
-<% if allow? :teams, :show, @team %>
-  <%= link_to 'Grubu Yönet', team_path(@team) %>
-<%end%>
-
 <div class="main">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <%= render 'shared/team_nav' %>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+          <%= render 'shared/team_nav' %>
+          <% if allow? :teams, :show, @team %>
+            <li><%= link_to 'Grubu Yönet', team_path(@team) %></li>
+          <%end%>
+        </ul>
       </div>
       <div class="col-md-8">
         <div class="row">

@@ -14,6 +14,9 @@
         </a>
       </li>
       <li class = "active"><%= link_to 'Yeni Çeviri', new_team_text_path%> </li>
+      <% if allow? :teams, :show, @team %>
+        <li><%= link_to 'Grubu Yönet', team_path(@team) %></li>
+      <%end%>
     </ul>
   </div>
   <div class="col-md-8">
