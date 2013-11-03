@@ -12,6 +12,9 @@
         <div class="row">
           <%= render 'shared/text_display' %> 
         </div>
+        <div class = 'middle' >
+          <%= will_paginate @texts, renderer: BootstrapPagination::Rails%>
+        </div>
       </div>
     </div>
   </div>
