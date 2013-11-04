@@ -10,7 +10,6 @@ feature 'user signs up as translator' do
    fill_in 'Şifre Tekrar',  with: '123456'
    check 'Çevirmen Olarak Üye Ol'
    click_button 'Beni Kaydet!'
-   expect(page).to have_content 'Çevrilecekler'
    expect(page).to have_content 'burak@burak.com'
   end
 end

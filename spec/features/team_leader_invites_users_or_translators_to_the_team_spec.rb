@@ -36,5 +36,6 @@ def sign_in_as_second_user_and_go_to_request_page
     fill_in 'Şifre', with: @user2.password
     click_button 'Giriş'
     visit user_path(@user2)
-    click_link 'Katılım İsteği'
+    expect(page).to have_content 'Katılım İsteği'
+    visit user_teams_path
 end
