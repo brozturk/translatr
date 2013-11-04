@@ -1,7 +1,37 @@
-<%= group_invite_request.each do |request| %>
-  <%= form_tag  request_path, method: :put do |f| %>
-    <%= hidden_field_tag :id, request.id %>
-    <%= submit_tag 'Kabul Et', class: 'btn btn-primary' %>
-    <%= submit_tag 'Reddet', class: 'btn btn-primary' %>
-  <%end%>
-<%end%>
+<div class="col-md-12">
+  <div class="widget stacked widget-table action-table middle">
+    <div class="widget-header">
+      <i class="icon-edit"></i>
+      <h3>Davet İsteği</h3>
+    </div> <!-- /widget-header -->
+
+    <div class="widget-content middle">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class = 'middle' >Davet Eden</th>
+            <th class = 'middle' >Grup İsmi</th>
+            <th class="middle">İşlem</th>
+          </tr>
+        </thead>
+        <% group_invite_request.each do |request| %>
+          <tbody>
+            <tr>
+              <td class="td-actions">
+                <%= name_of_the_team_leader_who_invited(request).titleize %>
+              </td>
+              <td class="td-actions"><%= request.team.name%></td>
+              <td class="td-actions">
+                <%= form_tag  request_path, method: :put do |f| %>
+                  <%= hidden_field_tag :id, request.id %>
+                  <%= submit_tag 'Kabul Et', class: 'btn btn-primary' %>
+                  <%= submit_tag 'Reddet', class: 'btn btn-primary' %>
+                <%end%>
+              </td>
+            </tr>
+          </tbody>
+        <%end%>
+      </table>
+    </div> <!-- /widget-content -->
+  </div> <!-- /widget -->
+</div>
