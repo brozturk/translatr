@@ -9,10 +9,6 @@
 <body>
   <% if signed_in? && !translator?%>
     <%= render 'shared/general_nav' %>
-    <%= render 'shared/main_nav' %>
-  <% elsif signed_in? && translator? %>
-    <%= render 'shared/general_nav' %>
-    <%= render 'shared/main_nav_for_translators' %>
   <% else %> 
     <%= render 'shared/general_nav_no_login' %>
   <%end%>
