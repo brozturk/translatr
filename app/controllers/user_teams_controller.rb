@@ -13,6 +13,11 @@ class UserTeamsController < ApplicationController
     @user_teams = UserTeam.new
   end
 
+  def edit
+    @relationship = current_resource
+    @team = @relationship.team
+  end
+
   def update
     @request = current_resource
     if params[:commit] == 'Kabul Et'

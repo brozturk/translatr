@@ -10,6 +10,9 @@ module Permissions
       end
 
       allow :user_teams, [:create, :update, :index]
+      allow :user_teams, [:edit, :destroy] do |relationship|
+        relationship.team.in?(user.teams)
+      end
       allow :texts, [:create, :new, :index]
 
       allow :texts, [:update, :edit, :destroy] do |text|

@@ -19,6 +19,7 @@ class TextsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
+    @relationship = UserTeam.where(team_id: @team.id, user_id: current_user.id, state: 'accepted').take
     @texts = @team.texts.paginate(page: params[:page], per_page: 6)
   end
   

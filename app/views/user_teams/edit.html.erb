@@ -1,0 +1,10 @@
+<div class = 'row'>
+  <h1 class = 'middle' >Gruptan Çıkmak istediğine eminmisin?</h1>
+</div>
+
+<div class = 'row'>
+  <div class = 'col col-md6 middle'>
+    <%= link_to 'Hayır', team_texts_path(@team), class: 'btn btn-primary btn-lg'%>
+    <%= link_to 'Gruptan Çık', user_team_path(@relationship), method: :delete, class: 'btn btn-primary btn-lg'%>
+  </div>
+</div>

@@ -29,6 +29,10 @@ describe Permissions::TeamMemberPermission do
       should allow_action(:user_teams, :index)  
       should allow_action(:user_teams, :update)  
       should allow_action(:user_teams, :create) 
+      should allow_action(:user_teams, :edit, relationship)  
+      should allow_action(:user_teams, :destroy, relationship) 
+      should_not allow_action(:user_teams, :edit)  
+      should_not allow_action(:user_teams, :destroy) 
     end
 
     it 'allows teams' do 
