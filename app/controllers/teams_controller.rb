@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   def show
     @team = current_resource
     @relationships = UserTeam.where(team_id: @team.id, state: 'accepted')
+    @relationship = UserTeam.where(user_id: current_user.id, team_id: @team.id, state: 'accepted').take
   end
   
   def create
