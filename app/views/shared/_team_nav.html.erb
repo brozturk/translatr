@@ -34,6 +34,26 @@
   <%end%>
 <%end%>
 
+<% if current_page?(team_translations_path(@team)) %>
+  <% if allow? :translations, :index %>
+    <li class = 'active'>
+      <%= link_to team_translations_path(@team) do %>
+        <span class="badge pull-right"><%= @texts.size %></span>
+        Çevrilmemiş Metinler
+      <%end%>
+    </li>
+  <%end%>
+<%else%>
+  <% if allow? :translations, :index %>
+    <li>  
+      <%= link_to team_translations_path(@team) do %>
+        <span class="badge pull-right"><%= @texts.size %></span>
+        Çevrilmemiş Metinler
+      <%end%>
+    </li>
+  <%end%>
+<%end%>
+
 <% if current_page?(new_team_text_path(@team)) %>
   <li class = 'active' ><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
 <%else%>

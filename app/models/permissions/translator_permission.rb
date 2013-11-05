@@ -9,7 +9,7 @@ module Permissions
       allow :texts, [:show] do |text|
         text.team.in?(user.teams)
       end
-      allow :translations, [:create] 
+      allow :translations, [:create, :index] 
       allow :translations, [:destroy, :update, :edit] do |translation|
         translation.in?(user.translations)
       end

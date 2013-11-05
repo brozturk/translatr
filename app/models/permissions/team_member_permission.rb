@@ -23,6 +23,7 @@ module Permissions
         text.team.in?(user.teams)
       end
 
+      allow :translations, [:index]
     end
   end
 end

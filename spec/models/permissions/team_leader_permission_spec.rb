@@ -72,10 +72,10 @@ describe Permissions::TeamLeaderPermission do
     end
 
     it 'should not allow translations' do 
+      should allow_action(:translations, :index) 
       should_not allow_action(:translations, :create)  
       should_not allow_action(:translations, :update) 
       should_not allow_action(:translations, :destroy)  
       should_not allow_action(:translations, :show)  
-      should_not allow_action(:translations, :index) 
     end
 end

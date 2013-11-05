@@ -19,6 +19,7 @@ module Permissions
       allow :texts, [:show] do |text|
         text.team.in?(user.teams)
       end
+      allow :translations, [:index]
     end
   end
 end

@@ -58,6 +58,7 @@ describe Permissions::TranslatorPermission do
 
     it 'allows translations' do 
       should allow_action(:translations, :create) 
+      should allow_action(:translations, :index) 
       should allow_action(:translations, :destroy, translation) 
       should allow_action(:translations, :update, translation) 
       should allow_action(:translations, :edit, translation) 
