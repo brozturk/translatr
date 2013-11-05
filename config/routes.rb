@@ -4,7 +4,9 @@ Translatr::Application.routes.draw do
   resources :users 
   resources :sessions, only: [:create, :destroy, :new]
   resources :teams, shallow: true do 
-    resources :texts
+    resources :texts do
+      get 'personal', on: :collection
+    end
     resources :translations
   end
   resources :user_teams

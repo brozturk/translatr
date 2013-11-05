@@ -12,7 +12,7 @@ module Permissions
       allow :user_teams, [:destroy] do |relationship|
         relationship.team.leader_id == user.id
       end
-      allow :texts, [ :create, :new, :index]
+      allow :texts, [ :create, :new, :index, :personal]
       allow :texts, [:update, :edit, :destroy] do |text|
         text.user_id == user.id
       end

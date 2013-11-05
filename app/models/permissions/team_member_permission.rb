@@ -13,7 +13,7 @@ module Permissions
       allow :user_teams, [:edit, :destroy] do |relationship|
         relationship.team.in?(user.teams)
       end
-      allow :texts, [:create, :new, :index]
+      allow :texts, [:create, :new, :index, :personal]
 
       allow :texts, [:update, :edit, :destroy] do |text|
         text.user_id == user.id

@@ -51,6 +51,7 @@ describe Permissions::TeamMemberPermission do
       should allow_action(:texts, :index)  
       should allow_action(:texts, :new)  
       should allow_action(:texts, :show, users_text)  
+      should allow_action(:texts, :personal)  
       should allow_action(:texts, :show, other_text)  
       should allow_action(:texts, :update, users_text)  
       should allow_action(:texts, :destroy , users_text)  

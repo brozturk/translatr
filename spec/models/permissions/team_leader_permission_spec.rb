@@ -60,6 +60,7 @@ describe Permissions::TeamLeaderPermission do
       should allow_action(:texts, :update, users_text) 
       should allow_action(:texts, :destroy , users_text)  
       should allow_action(:texts, :edit , users_text) 
+      should allow_action(:texts, :personal)  
       should_not allow_action(:texts, :update) 
       should_not allow_action(:texts, :destroy)  
       should_not allow_action(:texts, :edit)  

@@ -1,5 +1,5 @@
 class TextsController < ApplicationController
-  before_filter :check_for_team, only: [:index]
+  before_filter :check_for_team, only: [:index, :personal]
 
   def new
     @text = Text.new
@@ -47,6 +47,12 @@ class TextsController < ApplicationController
     if @text.update(text_params)
       redirect_to text_path(@text), success: 'Çeviri başarılı bir şekilde editlendi'
     end
+  end
+
+  def personal
+    @team = Team.find(params[:team_id])
+    @relationship = UserTeam.where(team_id: @team.id, user_id: current_user.id, state: 'accepted').take
+    @texts = @team.texts.where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
   end
 
   private
