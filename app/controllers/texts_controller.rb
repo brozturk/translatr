@@ -4,6 +4,7 @@ class TextsController < ApplicationController
   def new
     @text = Text.new
     @team = Team.find(params[:team_id])
+    @texts = @team.texts
   end
 
   def create

@@ -1,14 +1,14 @@
 <% if current_page?(team_texts_path(@team)) %>
   <li class="active">
     <%= link_to team_texts_path(@team) do %>
-      <span class="badge pull-right">42</span>
+      <span class="badge pull-right"><%= @texts.size %></span>
       Tüm Çeviriler
     <%end%>
   </li>
 <%else%>
   <li>
     <%= link_to team_texts_path(@team) do %>
-      <span class="badge pull-right">42</span>
+      <span class="badge pull-right"><%= @texts.size %></span>
       Tüm Çeviriler
     <%end%>
   </li>
