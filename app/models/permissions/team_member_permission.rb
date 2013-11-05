@@ -6,7 +6,7 @@ module Permissions
       allow :teams, [:new, :create, :index] 
       
       allow :teams, [:show] do |team|
-        team.in?(user.teams)
+        team.leader_id == user.id
       end
 
       allow :user_teams, [:create, :update, :index]

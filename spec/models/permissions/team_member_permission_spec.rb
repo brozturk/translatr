@@ -39,7 +39,7 @@ describe Permissions::TeamMemberPermission do
       should allow_action(:teams, :new)  
       should allow_action(:teams, :create)  
       should allow_action(:teams, :index)  
-      should allow_action(:teams, :show, team)
+      should_not allow_action(:teams, :show, team)
       should_not allow_action(:teams, :update)  
       should_not allow_action(:teams, :destroy)  
       should_not allow_action(:teams, :show)  
