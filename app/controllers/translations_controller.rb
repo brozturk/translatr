@@ -2,9 +2,7 @@ class TranslationsController < ApplicationController
   before_filter :check_for_team, only: [:index]
 
   def index
-    @team = Team.find(params[:team_id])
-    @relationship = UserTeam.where(team_id: @team.id, user_id: current_user.id, state: 'accepted').take
-    @texts = Text.where{id.not_in Translation.select{text_id}.uniq}.paginate(page: params[:page], per_page: 6)
+    variables_for_team_nav
   end
 
   def create
@@ -52,5 +50,13 @@ class TranslationsController < ApplicationController
     if !@team.in?(current_user.teams)
       redirect_to root_url, danger: 'Bunu yapmaya izniniz yok'
     end
+  end
+
+  def variables_for_team_nav
+    @team = Team.find(params[:team_id])
+    @relationship = UserTeam.where(team_id: @team.id, user_id: current_user.id, state: 'accepted').take
+    @personal_texts = @team.texts.where(user_id: current_user.id).paginate(page: params[:page], per_page: 6)
+    @untranslated = @team.texts.where{id.not_in Translation.select{text_id}.uniq}.paginate(page: params[:page], per_page: 6)
+    @texts = @team.texts.paginate(page: params[:page], per_page: 6)
   end
 end

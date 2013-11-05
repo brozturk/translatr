@@ -7,7 +7,20 @@
     </div>
     <div class="col-md-8">
       <div class="row">
-        <%= render 'shared/text_display' %> 
+        <% @personal_texts.each do |text| %>
+          <div class="col-md-6">
+            <div class="widget stacked">
+              <div class="widget-header middle">
+                <i class="icon-file"></i>
+                <h3>Çevrilecek</h3>
+              </div> <!-- /widget-header -->
+              <div class="widget-content middle">
+                <%= link_to text.title, text_path(text), class: "news-item-title" %>     
+                <p><%= excerpt(text.text, text.text.split.first, radius: 80) %></p>
+              </div> <!-- /widget-content -->
+            </div> <!-- /widget -->
+          </div> <!-- /span6 -->
+        <%end%>
       </div>
       <div class = 'middle' >
         <%= will_paginate @texts, renderer: BootstrapPagination::Rails%>

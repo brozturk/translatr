@@ -18,7 +18,7 @@
   <% if allow? :texts, :personal %>
     <li class = 'active'>
       <%= link_to personal_team_texts_path(@team) do %>
-        <span class="badge pull-right"><%= @texts.size %></span>
+        <span class="badge pull-right"><%= @personal_texts.size %></span>
         Benim Çevirilerim
       <%end%>
     </li>
@@ -27,7 +27,7 @@
   <% if allow? :texts, :personal %>
     <li>  
       <%= link_to personal_team_texts_path(@team) do %>
-        <span class="badge pull-right"><%= @texts.size %></span>
+        <span class="badge pull-right"><%= @personal_texts.size %></span>
         Benim Çevirilerim
       <%end%>
     </li>
@@ -38,7 +38,7 @@
   <% if allow? :translations, :index %>
     <li class = 'active'>
       <%= link_to team_translations_path(@team) do %>
-        <span class="badge pull-right"><%= @texts.size %></span>
+        <span class="badge pull-right"><%= @untranslated.size %></span>
         Çevrilmemiş Metinler
       <%end%>
     </li>
@@ -47,7 +47,7 @@
   <% if allow? :translations, :index %>
     <li>  
       <%= link_to team_translations_path(@team) do %>
-        <span class="badge pull-right"><%= @texts.size %></span>
+        <span class="badge pull-right"><%= @untranslated.size %></span>
         Çevrilmemiş Metinler
       <%end%>
     </li>
