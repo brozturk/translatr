@@ -26,4 +26,28 @@ feature 'users can see untranslated texts' do
     expect(page).to have_content @users_text.title
     expect(page).not_to have_content @leaders_text.title
   end
+
+  scenario 'as a translator' do 
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @translator.email
+    fill_in 'Şifre', with: @translator.password
+    click_button 'Giriş'
+    visit team_texts_path(@team)
+    expect(page).to have_content 'Çevrilmemiş Metinler'
+    visit team_translations_path(@team)
+    expect(page).to have_content @users_text.title
+    expect(page).not_to have_content @leaders_text.title
+  end
+  
+  scenario 'as a team_member' do 
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @user.email
+    fill_in 'Şifre', with: @user.password
+    click_button 'Giriş'
+    visit team_texts_path(@team)
+    expect(page).to have_content 'Çevrilmemiş Metinler'
+    visit team_translations_path(@team)
+    expect(page).to have_content @users_text.title
+    expect(page).not_to have_content @leaders_text.title
+  end
 end
