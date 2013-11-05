@@ -14,7 +14,7 @@
             <th class="middle">İşlem</th>
           </tr>
         </thead>
-        <% group_invite_request.each do |request| %>
+        <% @requests.each do |request| %>
           <tbody>
             <tr>
               <td class="td-actions">
@@ -34,4 +34,7 @@
       </table>
     </div> <!-- /widget-content -->
   </div> <!-- /widget -->
+  <div class = 'middle' %>
+    <%= will_paginate @requests, renderer: BootstrapPagination::Rails%>
+  <div> 
 </div>
