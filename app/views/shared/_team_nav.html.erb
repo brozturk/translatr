@@ -1,9 +1,18 @@
-<li class="active">
-  <%= link_to team_texts_path(@team) do %>
-    <span class="badge pull-right">42</span>
-    Tüm Çeviriler
-  <%end%>
-</li>
+<% if current_page?(team_texts_path(@team)) %>
+  <li class="active">
+    <%= link_to team_texts_path(@team) do %>
+      <span class="badge pull-right">42</span>
+      Tüm Çeviriler
+    <%end%>
+  </li>
+<%else%>
+  <li>
+    <%= link_to team_texts_path(@team) do %>
+      <span class="badge pull-right">42</span>
+      Tüm Çeviriler
+    <%end%>
+  </li>
+<%end%>
 
 <li class = ''>
   <a href="javascript:;">
@@ -11,4 +20,29 @@
     Benim Çevirilerim
   </a>
 </li>
-<li class = '' ><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
+
+<% if current_page?(new_team_text_path(@team)) %>
+  <li class = 'active' ><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
+<%else%>
+  <li><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %></li>
+<%end%>
+
+<% if current_page?(team_path(@team)) %>
+    <% if allow? :teams, :show, @team %>
+      <li class = 'active'><%= link_to 'Grubu Yönet', team_path(@team) %></li>
+    <%end%>
+<% else %>
+    <% if allow? :teams, :show, @team %>
+      <li><%= link_to 'Grubu Yönet', team_path(@team) %></li>
+    <%end%>
+<%end%>
+
+<% if current_page?(edit_user_team_path(@relationship)) %>
+    <% if allow? :user_teams, :edit, @relationship %>
+      <li class = 'active' ><%= link_to 'Gruptan Çık', edit_user_team_path(@relationship) %></li>
+    <%end%>
+<% else %>
+    <% if allow? :user_teams, :edit, @relationship %>
+      <li><%= link_to 'Gruptan Çık', edit_user_team_path(@relationship) %></li>
+    <%end%>
+<%end%>

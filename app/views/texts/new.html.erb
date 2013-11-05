@@ -1,22 +1,7 @@
 <div class="row">
   <div class="col-md-4">
     <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-      <li class="javascript:;">
-        <%= link_to team_texts_path do %>
-          <span class="badge pull-right">42</span>
-          Tüm Çeviriler
-        <%end%>
-      </li>
-      <li>
-        <a href="javascript:;">
-          <span class="badge pull-right">3</span>
-          Benim Çevirilerim
-        </a>
-      </li>
-      <li class = "active"><%= link_to 'Yeni Çeviri', new_team_text_path%> </li>
-      <% if allow? :teams, :show, @team %>
-        <li><%= link_to 'Grubu Yönet', team_path(@team) %></li>
-      <%end%>
+      <%= render 'shared/team_nav' %>
     </ul>
   </div>
   <div class="col-md-8">

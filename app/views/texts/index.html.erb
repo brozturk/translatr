@@ -4,12 +4,6 @@
       <div class="col-md-4">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
           <%= render 'shared/team_nav' %>
-          <% if allow? :teams, :show, @team %>
-            <li><%= link_to 'Grubu Yönet', team_path(@team) %></li>
-          <%end%>
-          <% if allow? :user_teams, :edit, @relationship %>
-            <li><%= link_to 'Gruptan Çık', edit_user_team_path(@relationship) %></li>
-          <%end%>
         </ul>
       </div>
       <div class="col-md-8">
