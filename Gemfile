@@ -7,6 +7,7 @@ gem 'state_machine'
 gem 'figaro'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'squeel'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
