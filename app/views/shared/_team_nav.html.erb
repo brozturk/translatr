@@ -55,9 +55,13 @@
 <%end%>
 
 <% if current_page?(new_team_text_path(@team)) %>
-  <li class = 'active' ><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
+  <% if allow? :texts, :new%>
+    <li class = 'active' ><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %> </li>
+  <%end%>
 <%else%>
-  <li><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %></li>
+  <% if allow? :texts, :new%>
+    <li><%= link_to 'Yeni Çeviri', new_team_text_path(@team) %></li>
+  <%end%>
 <%end%>
 
 <% if current_page?(team_path(@team)) %>

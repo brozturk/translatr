@@ -56,4 +56,14 @@ feature 'user is restricted' do
    expect(page).not_to have_content 'Bunu yapmaya izniniz yok'
    expect(current_path).to eq team_texts_path(@team)
   end
+
+  scenario 'when trying to manage a group they are not a leader of' do 
+   visit new_session_path
+   fill_in 'Mail Adresi', with: @user.email
+   fill_in 'Şifre', with: @user.password
+   click_button 'Giriş'
+   visit team_texts_path(@team)
+   expect(page).not_to have_content 'Grubu Yönet'
+   expect(current_path).to eq team_texts_path(@team)
+  end
 end
