@@ -1,13 +1,13 @@
 Translatr::Application.routes.draw do
 
-
-  resources :users 
+  resources :users , expect: [:index]
   resources :sessions, only: [:create, :destroy, :new]
   resources :teams, shallow: true do 
     resources :texts do
       get 'personal', on: :collection
     end
     resources :translations
+    resources :users, only: [:index] 
   end
   resources :user_teams
   resources :password_resets
