@@ -21,8 +21,8 @@ describe Permissions::TeamMemberPermission do
     it 'allows users' do 
       should allow_action(:users, :new)  
       should allow_action(:users, :create)  
-      should allow_action(:users, :index)  
       should allow_action(:users, :show) 
+      should_not allow_action(:users, :index)  
     end
 
     it 'allows user_teams' do 

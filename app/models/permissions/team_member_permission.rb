@@ -2,7 +2,7 @@ module Permissions
   class TeamMemberPermission < BasePermission
     def initialize(user)
       allow :sessions, [:new, :create, :destroy] 
-      allow :users, [:new, :create, :index, :show, :edit, :update]
+      allow :users, [:new, :create, :show, :edit, :update]
       allow :teams, [:new, :create, :index] 
       
       allow :teams, [:show] do |team|

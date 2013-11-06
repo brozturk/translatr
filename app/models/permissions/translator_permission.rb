@@ -2,7 +2,7 @@ module Permissions
   class TranslatorPermission < BasePermission
     def initialize(user)
       allow :sessions, [:new, :create, :destroy] 
-      allow :users, [:index, :show, :edit, :update, :new, :create] 
+      allow :users, [:show, :edit, :update, :new, :create] 
       allow :teams, [:new, :create, :index] 
       allow :user_teams, [:create, :update, :index]
       allow :texts, [:index]
