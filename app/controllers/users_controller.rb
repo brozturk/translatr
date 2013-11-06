@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @users = User.that_is_not_a_translator
     @translators = User.that_is_a_translator
     @user_teams = UserTeam.new
+    @team = Team.find(params[:team_id])
   end
 
   def show
