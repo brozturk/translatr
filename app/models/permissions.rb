@@ -8,6 +8,8 @@ module Permissions
       TeamMemberPermission.new(user)
     elsif  user && user.teams.count > 0 && !user.translator && user.leader 
       TeamLeaderPermission.new(user)
+    elsif user && user.leader && user.translator
+      LeaderAndTranslator.new(user)
     elsif user && user.translator 
       TranslatorPermission.new(user)
     end 
