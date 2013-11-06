@@ -10,6 +10,7 @@ Translatr::Application.routes.draw do
     resources :translations
   end
   resources :user_teams
+  resources :password_resets
   root 'sessions#new'
   match 'signout', to: 'sessions#destroy', via: :delete
   match 'request', to: 'user_teams#update', via: :put

@@ -1,37 +1,24 @@
 <div class="account-container stacked">
-
   <div class="content clearfix">
-
     <%= form_for(:session, url: sessions_path)  do |f| %>
-
       <h1>Giriş Yap</h1>    
-
       <div class="login-fields">
-
         <p>Kayıtlı hesabını kullanarak giriş yap:  </p>
-
         <div class="field">
           <%= f.text_field :email, :placeholder => 'Mail Adresi', class: "form-control input-lg username-field" %>
         </div> <!-- /field -->
-
         <div class="field">
           <%= f.password_field :password, :placeholder => 'Şifre', class: "form-control input-lg password-field" %>
         </div> <!-- /password -->
-
       </div> <!-- /login-fields -->
-
       <div class="login-actions">
-
         <span class="login-checkbox">
           <%= check_box_tag :remember_me, 1, params[:remember_me], class: "field login-checkbox" %>
           <%= label_tag :remember_me, 'Beni Hatırla!', class: "choice" %>
         </span>
-
-
         <%= f.submit 'Giriş', class: "login-action btn btn-primary" %>
-
       </div> <!-- .actions -->
-
+      
       <!-- <div class="login-social">
         <p>Sosyal ağ kullanarak giriş yap: </p>
 
@@ -45,16 +32,12 @@
       </div>--> 
 
     <%end%>
-
   </div> <!-- /content -->
-
 </div> <!-- /account-container -->
-
-
 <!-- Text Under Box -->
 <div class="login-extra">
   Hesabın Yokmmu? <%= link_to 'Kayıt ol!', new_user_path %></br> 
-  Remind <a href="#">Password</a>
+  Şifrenimi unuttun? <%= link_to 'Hatırlatalım!', new_password_reset_path %>
 </div> <!-- /login-extra -->
 
 

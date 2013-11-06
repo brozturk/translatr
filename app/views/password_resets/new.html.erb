@@ -1,0 +1,13 @@
+<div class="account-container stacked">
+  <div class="content clearfix">
+
+    <%= form_tag password_resets_path, method: :post, class: 'form-signin' do %>
+      <h2 class="form-signin-heading">Mail Adresinizi Girin</h2>
+      <div class="field">
+        <%= email_field_tag :email, params[:email], :placeholder => 'Mail Adresi', class: "form-control"%>
+      </div>
+      <%= submit_tag 'Şifremi Hatırlat!', class: "login-action btn btn-primary" %>
+    <%end%>
+
+  </div>
+</div> <!-- /container -->

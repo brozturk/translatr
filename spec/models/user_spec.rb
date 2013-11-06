@@ -18,4 +18,25 @@ describe User do
   describe 'remember token' do 
     its(:remember_token) { should_not be_blank }  
   end
+
+  describe '#send_password_reset_info' do
+    let(:user) { create(:user) } 
+
+    it 'generates a token' do 
+      user.send_password_reset_info
+      sent_token = user.password_reset_token
+      user.send_password_reset_info
+      expect(user.password_reset_token).not_to eq sent_token
+    end
+
+    it 'sets the time the token was sent' do
+      user.send_password_reset_info
+      expect(user.reload.password_reset_sent_at).to be_present
+    end
+
+    it 'delivers email to the user' do
+      user.send_password_reset_info
+      expect(open_last_email).to be_delivered_to user.email
+    end
+  end
 end

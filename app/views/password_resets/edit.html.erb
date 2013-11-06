@@ -1,0 +1,20 @@
+<div class="account-container stacked">
+  <div class="content clearfix">
+    <%= form_for @user, url: password_reset_path(params[:id])  do |f| %>
+      <h1>Yeni Şifre</h1>    
+      <div class="login-fields">
+        <div class="field">
+          <%= f.password_field :password, :placeholder => 'Şifre', class: "form-control input-lg username-field" %>
+        </div> <!-- /field -->
+        <div class="field">
+          <%= f.password_field :password_confirmation, :placeholder => 'Şifre Tekrar', class: "form-control input-lg password-field" %>
+        </div> <!-- /password -->
+      </div> <!-- /login-fields -->
+      <div class="login-actions">
+        <%= f.submit 'Şifremi Yenile', class: "login-action btn btn-primary" %>
+      </div> <!-- .actions -->
+    <%end%>
+  </div> <!-- /content -->
+</div> <!-- /account-container -->
+
+
