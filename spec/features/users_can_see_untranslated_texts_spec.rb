@@ -6,7 +6,6 @@ feature 'users can see untranslated texts' do
     @translator = create(:user, translator: true)
     @user = create(:user)
     @team = create(:team, leader_id: @team_leader.id)
-    @team_leader.leader_of_team = @team.id
     @relationship = create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
     @translator_relationship = create(:user_team, user_id: @translator.id, team_id: @team.id, state: 'accepted')
     @leader_relationship = create(:user_team, user_id: @team_leader.id, team_id: @team.id, state: 'accepted')

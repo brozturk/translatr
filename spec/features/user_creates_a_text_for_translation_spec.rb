@@ -6,7 +6,6 @@ feature 'user creates a text for translation: ' do
     @user = create(:user)
     @team = create(:team)
     @team.leader_id = @team_leader.id
-    @team_leader.leader_of_team = @team.id
     @team_leader.leader = true
     @relationship = create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
     @leader_relationship = create(:user_team, user_id: @team_leader.id, team_id: @team.id, state: 'accepted')

@@ -6,7 +6,6 @@ feature 'Team leader can manage a team' do
       @user = FactoryGirl.create(:user, leader: true)
       @other_user = FactoryGirl.create(:user)
       @team = FactoryGirl.create(:team, leader_id: @user.id)
-      @user.leader_of_team = @team.id
       relationship = FactoryGirl.create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
       relationship2 = FactoryGirl.create(:user_team, user_id: @other_user.id, team_id: @team.id, state: 'accepted')
       @other_team = FactoryGirl.create(:team)

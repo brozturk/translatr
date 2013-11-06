@@ -5,7 +5,6 @@ feature 'user leaves group' do
     @user = create(:user, leader: true)
     @other_user = create(:user)
     @team = create(:team, leader_id: @user.id)
-    @user.leader_of_team = @user.id
     relationship = create(:user_team, user_id: @user.id, team_id: @team.id, state: 'accepted')
     @relationship2 = create(:user_team, user_id: @other_user.id, team_id: @team.id, state: 'accepted')
     @other_team = create(:team)

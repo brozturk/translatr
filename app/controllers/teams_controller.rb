@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.leader_id = current_user.id
     if @team.save
-      current_user.update_columns(leader: 'true', leader_of_team: @team.id)
+      current_user.update_columns(leader: 'true')
       UserTeam.create(user_id: current_user.id, team_id: @team.id, state: 'accepted')
       redirect_to user_path(current_user), success: 'Grup kuruldu...Grup işlemleri sekmesinden grubunuzu yönetebilirsiniz.'
     else
