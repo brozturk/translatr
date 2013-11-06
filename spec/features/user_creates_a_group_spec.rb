@@ -9,8 +9,9 @@ feature 'user creates a gorup' do
       fill_in 'Grup İsmi', with: 'blaloblawgrou'
       click_button 'Grubu Kur' 
     }.to change(Team, :count).by(1)
+    click_link 'blaloblawgrou'
     expect(page).to have_content 'Gruba Ekle'
-    expect(page).to have_content 'Grup İşlemleri'
+    expect(page).to have_content 'Grubu Yönet'
   end
 end
 

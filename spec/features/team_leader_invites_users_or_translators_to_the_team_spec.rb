@@ -3,12 +3,16 @@ require 'spec_helper'
 feature 'team leader invites users or translators to the team' do 
   background do 
     @user2 = create(:user, translator: true)
-    create_user_and_login
-    visit user_path(@user)
-    click_link 'Grup Oluştur'
-    fill_in 'Grup İsmi', with: 'Decoy Group'
-    click_button 'Grubu Kur' 
-    click_link 'Gruba Ekle'
+    @user = create(:user, leader: true)
+    @team = create(:team, name: 'Decoy Group', leader_id: @user.id)
+    @relationship = create(:user_team, team_id: @team.id, user_id: @user.id, state: 'accepted')
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @user.email
+    fill_in 'Şifre', with: @user.password
+    click_button 'Giriş'
+    visit team_texts_path(@team)
+    expect(page).to have_content 'Gruba Ekle'
+    visit team_users_path(@team)
     within('form#translator') do 
       click_button 'Gruba Davet Et'
     end
