@@ -74,6 +74,16 @@
     <%end%>
 <%end%>
 
+<% if current_page?(team_users_path(@team)) %>
+    <% if allow? :users, :index %>
+      <li class = 'active'><%= link_to 'Gruba Ekle', team_users_path(@team) %></li>
+    <%end%>
+<% else %>
+    <% if allow? :users, :index %>
+      <li><%= link_to 'Gruba Ekle', team_users_path(@team) %></li>
+    <%end%>
+<%end%>
+
 <% if current_page?(edit_user_team_path(@relationship)) %>
     <% if allow? :user_teams, :edit, @relationship %>
       <li class = 'active' ><%= link_to 'Gruptan Çık', edit_user_team_path(@relationship) %></li>
