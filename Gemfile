@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'squeel'
+gem 'newrelic_rpm'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
