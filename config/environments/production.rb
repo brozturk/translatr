@@ -77,4 +77,14 @@ Translatr::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  config.action_mailer.default_url_options = { host: 'translatr.herokuapp.com' }
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'translatr.herokuapp.com',
+    user_name:            ENV["MANDRILL_USERNAME"], 
+    password:             ENV["MANDRILL_PASSWORD"], 
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 end
