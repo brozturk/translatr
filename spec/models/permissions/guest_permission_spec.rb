@@ -17,5 +17,7 @@ describe Permissions::GuestPermission do
   it 'allow password resets' do 
     should allow_action(:password_resets, :new)  
     should allow_action(:password_resets, :create)  
+    should allow_action(:password_resets, :edit)  
+    should allow_action(:password_resets, :update)  
   end
 end
