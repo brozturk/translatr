@@ -1,5 +1,5 @@
 class MemberMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "translatr@example.com"
 
   def text_creation_notification(text)
     @text = text
