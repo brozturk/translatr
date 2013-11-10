@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
   has_many :teams,  -> { where user_teams: { state: 'accepted' } }, through: :user_teams
-  has_many :translations
-  has_many :user_teams
+  has_many :translations, dependent: :destroy
+  has_many :user_teams, dependent: :destroy
   has_many :texts
 
   has_secure_password
