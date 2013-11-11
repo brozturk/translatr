@@ -3,12 +3,12 @@
     <div class="container">
       <div class="row">
         <%= render 'shared/group_info' %>
-      </div>
       <% if !current_user.translator %>
-      <div class = 'row'>
         <%= render 'shared/texts_info' %>
-      </div>
+      <%elsif%>
+        <%= render 'shared/translations_info' %>
     <%end%>
+      </div>
     </div>
   </div>
 <%end%>
