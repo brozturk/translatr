@@ -4,6 +4,11 @@
       <div class="row">
         <%= render 'shared/group_info' %>
       </div>
+      <% if !current_user.translator %>
+      <div class = 'row'>
+        <%= render 'shared/texts_info' %>
+      </div>
+    <%end%>
     </div>
   </div>
 <%end%>

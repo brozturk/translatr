@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  
+    @texts = current_user.texts.latest
   end
 
   private

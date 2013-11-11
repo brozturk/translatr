@@ -1,4 +1,6 @@
 class Text < ActiveRecord::Base
+  scope :latest, -> { order(created_at: :desc).limit(5) } 
+
   after_create :send_notification_email
   after_update :send_update_notification
   

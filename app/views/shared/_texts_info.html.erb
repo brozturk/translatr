@@ -1,0 +1,34 @@
+  <div class="col-md-6">
+
+    <div class="widget stacked widget-table action-table">
+
+      <div class="widget-header">
+        <i class="icon-group"></i>
+        <h3> Son Çevirttiklerim</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content middle">
+
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th class = 'middle'>Metin Başlığı</th>
+              <th class = 'middle'>Çeviri Durumu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @texts.each do |text| %>
+              <tr>
+                <td><%= link_to text.title, text_path(text) %></td>
+                <td> 
+                  <button type = 'button' class = 'btn btn-info'>
+                    <%= check_for_translation(text) %>
+                  </button>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div>
