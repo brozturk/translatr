@@ -36,4 +36,25 @@ feature 'user dashboard' do
     expect(page).to have_content @other_text.title
     expect(page).not_to have_content @translated_text.title
   end
+
+  scenario 'users can click on the title which will take them to the text#show action' do
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @user.email
+    fill_in 'Şifre', with: @user.password
+    click_button 'Giriş'
+    visit user_path(@user)
+    click_link  @text.title
+    expect(current_path).to eq text_path(@text)
+  end
+
+  scenario 'user can see other members of the team they are a member of' do
+    visit new_session_path
+    fill_in 'Mail Adresi', with: @user.email
+    fill_in 'Şifre', with: @user.password
+    click_button 'Giriş'
+    visit user_path(@user)
+    expect(page).to have_content @translator.email
+    expect(page).to have_content @user.email
+  end
+  
 end
