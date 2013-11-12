@@ -1,6 +1,6 @@
 Translatr::Application.routes.draw do
 
-  resources :users , expect: [:index]
+  resources :users , except: [:index]
   resources :sessions, only: [:create, :destroy, :new]
   resources :teams, shallow: true do 
     resources :texts do

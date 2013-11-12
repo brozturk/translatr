@@ -1,0 +1,14 @@
+<div class="account-container stacked">
+  <div class="content clearfix">
+
+    <%= form_for :user, url: user_path(@user), method: :patch, class: 'form-signin' do |f| %>
+      <h2 class="form-signin-heading">Şifre Değiştir</h2>
+      <div class="field">
+        <%= f.password_field :password, :placeholder => 'Şifre', class: "form-control"%>
+        <%= f.password_field :password_confirmation, :placeholder => 'Şifre Tekrar', class: "form-control"%>
+      </div>
+      <%= f.submit 'Şifremi Değiştir', class: "login-action btn btn-primary" %>
+    <%end%>
+
+  </div>
+</div> <!-- /container -->

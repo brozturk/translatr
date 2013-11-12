@@ -27,11 +27,28 @@ class UsersController < ApplicationController
     @texts = current_user.texts.latest
   end
 
+  def edit
+    @user = current_resource
+  end
+
+  def update
+    @user = current_resource
+    if @user.update(user_params)
+      redirect_to root_url, success: 'Şifre başarılı bir şekilde değiştirildi'
+    else
+      redirect_to root_url, danger: 'Şifre değiştirilirken bir hata oluştu lütfen tekrar deneyin'
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :last_name, :email, :password, 
                                  :password_confirmation, :translator)
+  end
+
+  def current_resource
+    @current_resource ||= User.find(params[:id])
   end
 
   def redirect_if_signed_in
