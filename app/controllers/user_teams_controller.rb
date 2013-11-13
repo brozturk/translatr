@@ -43,7 +43,7 @@ class UserTeamsController < ApplicationController
   private 
 
   def user_team_params
-    params.require(:user_team).permit(:user_id, :team_id, :leader_of_team)
+    params.require(:user_team).permit(:user_id, :team_id, :state)
   end
 
   def current_resource
