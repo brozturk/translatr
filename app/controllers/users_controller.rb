@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def current_resource
-    @current_resource ||= User.find(params[:id])
+    @current_resource ||= User.find(params[:id]) if params[:id]
   end
 
   def redirect_if_signed_in
