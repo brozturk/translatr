@@ -21,7 +21,7 @@
           <tbody>
             <% team.users.each do |user| %>
               <tr>
-                <td><%= user.name %></td>
+                <td><%= user.name.titleize%></td>
                 <td><%= user.email %></td>
                 <td><%= user.texts.size %> </td>
               </tr>
