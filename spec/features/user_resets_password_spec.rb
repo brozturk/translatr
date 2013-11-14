@@ -5,7 +5,7 @@ feature 'user resets password' do
   scenario 'by clicking the password reset link' do 
     user = create(:user)
     visit new_session_path
-    click_link 'Hatırlatalım!'
+    click_link 'Değiştirelim!'
     fill_in 'Mail Adresi', with: user.email
     click_button 'Şifremi Hatırlat!'
     expect(current_path).to eq root_path
