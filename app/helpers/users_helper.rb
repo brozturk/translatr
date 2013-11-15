@@ -18,4 +18,12 @@ module UsersHelper
     return @untranslated
   end
 
+  def already_in(team, user)
+    user.in?(team.users)
+  end
+
+  def requested_in(team, user)
+    UserTeam.where(team_id: team.id, user_id: user.id, state: 'requested').present?
+  end
+
 end

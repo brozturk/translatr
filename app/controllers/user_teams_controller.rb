@@ -3,9 +3,9 @@ class UserTeamsController < ApplicationController
   def create
     @request = UserTeam.new(user_team_params)
     if @request.save
-      redirect_to user_path(current_user), success: 'Gruba katılım isteği gönerildi'
+      redirect_to team_users_path(@request.team), success: 'Gruba katılım isteği gönerildi'
     else
-      redirect_to new_users_path, danger: 'Gruba davet başarısız oldu lütfen tekrar dene'
+      redirect_to team_users_path(@request.team), danger: 'Gruba davet başarısız oldu lütfen tekrar dene'
     end
   end
 
