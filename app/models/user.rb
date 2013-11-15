@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_attached_file :avatar, :styles => { :medium => "140x140>" }, :default_url => "/images/:style/missing.png"
+
   scope :that_is_not_a_translator, -> { where(translator: false) }
   scope :that_is_a_translator, -> { where(translator: true) }
 

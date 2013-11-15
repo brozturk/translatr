@@ -21,11 +21,11 @@ feature 'user resets password' do
     fill_in 'Şifre', with: user.password
     click_button 'Giriş'
     visit user_path(user)
-    click_link 'Şifre Değiştir'
+    click_link 'Profil'
     fill_in 'Şifre', with: 'newpassword'
     fill_in 'Şifre Tekrar', with: 'newpassword'
-    click_button 'Şifremi Değiştir'
-    expect(page).to have_content 'Şifre başarılı bir şekilde değiştirildi'
+    click_button 'Güncelle'
+    expect(page).to have_content  'Bilgileriniz güncellendi'
     expect(current_path).to eq user_path(user)
     click_link 'Çıkış Yap'
     visit new_session_path

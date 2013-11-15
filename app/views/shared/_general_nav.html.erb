@@ -51,9 +51,9 @@
               <%end%></li>
             <%end%>
             <li><%= link_to 'Grup Oluştur', new_team_path %></li>
+            <li><%= link_to 'Profil', edit_user_path(current_user) %></li>
             <li class="divider"></li>
             <li><%= link_to 'Çıkış Yap', signout_path, method: 'delete' %></li>
-            <li><%= link_to 'Şifre Değiştir', edit_user_path(current_user) %></li>
           </ul>
 
         </li>

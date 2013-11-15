@@ -9,6 +9,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'squeel'
 gem 'newrelic_rpm'
+gem 'paperclip'
 
 # Use postgresql as the database for Active Record
 gem 'pg'

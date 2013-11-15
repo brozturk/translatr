@@ -34,16 +34,16 @@ class UsersController < ApplicationController
   def update
     @user = current_resource
     if @user.update(user_params)
-      redirect_to root_url, success: 'Şifre başarılı bir şekilde değiştirildi'
+      redirect_to root_url, success: 'Bilgileriniz güncellendi'
     else
-      redirect_to root_url, danger: 'Şifre değiştirilirken bir hata oluştu lütfen tekrar deneyin'
+      redirect_to root_url, danger: 'Bilgilerinizin güncellenmesinde sorun oluştu lütfen tekrar deneyin'
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :last_name, :email, :password, 
+    params.require(:user).permit(:name, :last_name, :email, :password, :avatar,
                                  :password_confirmation, :translator)
   end
 

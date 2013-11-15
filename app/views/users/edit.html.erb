@@ -1,14 +1,92 @@
-<div class="account-container stacked">
-  <div class="content clearfix">
+<div class="main">
 
-    <%= form_for :user, url: user_path(@user), method: :patch, class: 'form-signin' do |f| %>
-      <h2 class="form-signin-heading">Şifre Değiştir</h2>
-      <div class="field">
-        <%= f.password_field :password, :placeholder => 'Şifre', class: "form-control"%>
-        <%= f.password_field :password_confirmation, :placeholder => 'Şifre Tekrar', class: "form-control"%>
-      </div>
-      <%= f.submit 'Şifremi Değiştir', class: "login-action btn btn-primary" %>
-    <%end%>
+  <div class="container">
 
-  </div>
-</div> <!-- /container -->
+    <div class="row">
+
+      <div class="col-md-8">          
+
+        <div class="widget stacked ">
+
+          <div class="widget-header">
+            <i class="icon-user"></i>
+            <h3>Hesabınız</h3>
+          </div> <!-- /widget-header -->
+
+          <div class="widget-content">
+
+
+            <br>
+
+            <div id="edit-profile" class="form-horizontal col-md-8">
+              <%= form_for :user, url: user_path(@user), method: :patch, class: "form-horizontal col-md-8", :id => "edit-profile" do |f| %>
+              <fieldset>
+
+                <div class="form-group">                      
+                  <label for="avatar" class="col-md-4">Profil Resmi</label>
+                  <div class="col-md-8">
+                    <%= f.file_field :avatar, class: 'form-control'%>
+                    <p class="help-block">Profil resminizi buradan düzenleyebilirisniz.<p>
+                  </div> <!-- /controls -->       
+                </div> <!-- /control-group -->
+
+
+                <div class="form-group">                      
+                  <label for="firstname" class="col-md-4">İsim</label>
+                  <div class="col-md-8">
+                    <%= f.text_field :name, class: 'form-control'%>
+                  </div> <!-- /controls -->       
+                </div> <!-- /control-group -->
+
+
+                <div class="form-group">                      
+                  <label class="col-md-4" for="lastname">Soyisim</label>
+                  <div class="col-md-8">
+                    <%= f.text_field :last_name, class: 'form-control'%>
+                  </div> <!-- /controls -->       
+                </div> <!-- /control-group -->
+
+
+                <div class="form-group">                      
+                  <label class="col-md-4" for="email">Mail Adresi</label>
+                  <div class="col-md-8">
+                    <%= f.email_field :email, class: 'form-control'%>
+                  </div> <!-- /controls -->       
+                </div> <!-- /control-group -->
+                <hr /><br />
+
+                <div class="form-group">                      
+                    <%= f.label 'Şifre', class: 'col-md-4' %>
+                    <div class="col-md-8">
+                      <%= f.password_field :password, :placeholder => 'Şifre', :value => 'password', class: "form-control"%>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+
+
+                  <div class="form-group">                      
+                    <label class="col-md-4" for="password2">Şifre Tekrar</label>
+                    <div class="col-md-8">
+                      <%= f.password_field :password_confirmation,  :placeholder => 'Şifre Tekrar', :value => 'password', class: "form-control"%>
+                    </div> <!-- /controls -->       
+                  </div> <!-- /control-group -->
+
+                <br />
+
+                <div class="form-group">
+
+                  <div class="col-md-offset-4 col-md-8">
+                    <%= f.submit 'Güncelle', class: "btn btn-primary" %>
+                  </div>
+                </div> <!-- /form-actions -->
+              </fieldset>
+          <%end%>
+        </div>
+
+      </div> <!-- /widget-content -->
+
+    </div> <!-- /widget -->
+
+  </div> <!-- /span8 -->
+
+</div> <!-- /row -->
+

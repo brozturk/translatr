@@ -1,13 +1,39 @@
 <% if user_has_accepted_team? %>
   <div class="main">
     <div class="container">
+      <div class = 'row'>
+        <div class = 'col-md-6 col-md-offset-3'>
+          <div class="widget stacked">
+            <div class="widget-header middle">
+              <i class="icon-tag"></i>
+              <h3>Profil Bilgileri</h3>
+            </div> <!-- /widget-header -->
+            <div class="widget-content">
+              <div class = 'col-md-3'>
+
+                <% if current_user.avatar.exists? %>
+                  <%= image_tag current_user.avatar.url(:medium), class: 'img-thumbnail'%>
+                <%else%>
+                  <%= image_tag 'avatar_placeholder.png', class: 'img-thumbnail' %>
+                <%end%>
+              </div>
+              <div class="col-md-6 middle">
+                <div class="list-group">
+                  <h4 class="list-group-item-heading blue"><%= current_user.name + ' ' + current_user.last_name %></h4>
+                  <p class="list-group-item-text"><%= current_user.email %></p>
+                </div>
+              </div>
+            </div> <!-- /widget-content -->
+          </div> <!-- /widget -->
+        </div>
+      </div>
       <div class="row">
         <%= render 'shared/group_info' %>
-      <% if !current_user.translator %>
-        <%= render 'shared/texts_info' %>
-      <%elsif%>
-        <%= render 'shared/translations_info' %>
-    <%end%>
+        <% if !current_user.translator %>
+          <%= render 'shared/texts_info' %>
+        <%elsif%>
+          <%= render 'shared/translations_info' %>
+        <%end%>
       </div>
     </div>
   </div>
