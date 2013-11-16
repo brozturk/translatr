@@ -37,13 +37,13 @@
                           <button type="button" class="btn btn-info">Onay Bekleniyor</button>
                         </td>
                       <%else%>
-                      <td class="td-actions"> 
-                        <%= form_for @user_teams do |f| %>
-                          <%= f.hidden_field :user_id, :value => user.id %>
-                          <%= f.hidden_field :team_id, :value => @team.id%>
-                          <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
-                        <%end%>
-                      </td>
+                        <td class="td-actions"> 
+                          <%= form_for @user_teams do |f| %>
+                            <%= f.hidden_field :user_id, :value => user.id %>
+                            <%= f.hidden_field :team_id, :value => @team.id%>
+                            <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
+                          <%end%>
+                        </td>
                       <%end%>
                     </tr>
                   </tbody>
@@ -81,11 +81,21 @@
                     <tr>
                       <td class  = "td-actions"><%= translator.name %></td>
                       <td class  = "td-actions"><%= translator.email %></td>
-                      <td class  = "td-actions">
-                        <%= form_for @user_teams, html: { id: 'translator' } do |f| %>
-                          <%= f.hidden_field :user_id, :value => translator.id %>
-                          <%= f.hidden_field :team_id, :value => @team.id%>
-                          <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
+                      <% if already_in(@team, translator) %>
+                        <td class = "td-actions"> 
+                          <button type="button" class="btn btn-success">Grupta</button>
+                        </td>
+                      <% elsif requested_in(@team, translator) %>
+                        <td class = "td-actions"> 
+                          <button type="button" class="btn btn-info">Onay Bekleniyor</button>
+                        </td>
+                      <%else%>
+                        <td class  = "td-actions">
+                          <%= form_for @user_teams, html: { id: 'translator' } do |f| %>
+                            <%= f.hidden_field :user_id, :value => translator.id %>
+                            <%= f.hidden_field :team_id, :value => @team.id%>
+                            <%= f.submit 'Gruba Davet Et', class: 'btn btn-primary'%>
+                          <%end%>
                         <%end%>
                       </td>
                     </tr>
