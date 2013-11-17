@@ -2157,3 +2157,7 @@ span.login-checkbox > input[type='checkbox']:checked + label {
 .blue {
   color: #5bc0de;
 }
+
+.down {
+  margin-top: 15px;
+}

@@ -14,31 +14,12 @@
     <%end%>
   </div>
 </div>
+
 <div class = "row" >
-  <div class="col-md-6">
-    <div class="widget stacked">
-      <div class="widget-header middle">
-        <i class="icon-file"></i>
-        <h3><%= @text.title %></h3>
-      </div> <!-- /widget-header -->
-      <div class="widget-content middle">
-        <%= @text.text %>
-      </div> <!-- /widget-content -->
-    </div> <!-- /widget -->
-  </div> <!-- /span6 -->
+  <%= render 'shared/text_and_author_info' %>
 
   <% if @text.translation %>
-    <div class="col-md-6">
-      <div class="widget stacked">
-        <div class="widget-header middle">
-          <i class="icon-file"></i>
-          <h3>Çeviri</h3>
-        </div> <!-- /widget-header -->
-        <div class="widget-content middle">
-          <%= @text.translation.translation_text %>
-        </div> <!-- /widget-content -->
-      </div> <!-- /widget -->
-    </div> <!-- /span6 -->
+    <%= render 'shared/translation_and_author_info' %>
   <%end%>
 
   <% if current_user.translator && !@text.translation %>

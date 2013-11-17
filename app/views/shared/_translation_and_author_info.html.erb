@@ -1,0 +1,35 @@
+<div class="col-md-6">
+  <div class="widget stacked">
+    <div class="widget-header middle">
+      <i class="icon-file"></i>
+      <h3>Çeviri</h3>
+    </div> <!-- /widget-header -->
+    <div class="widget-content middle">
+      <%= @text.translation.translation_text %>
+
+      <div class="panel panel-default down">
+        <div class="panel-body">
+          <div class="col-md-12">
+            <div class="media">
+              <a class="pull-left" href="#">
+                <% if @text.translation.user.avatar.exists? %>
+                  <%= image_tag @text.translation.user.avatar.url(:media) %>
+                <%else%>
+                  <%= image_tag 'media_placeholder.png' %>
+                <%end%>
+              </a>
+              <div class="media-body pull-left">
+                <h4 class="media-heading"><%= @text.translation.user.name %></h4>
+                <h5><small>
+                    <%= distance_of_time_in_words_to_now(@text.translation.created_at) + ' önce'%>
+                </small></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /widget-content -->
+  </div> <!-- /widget -->
+</div> <!-- /span6 -->
+
