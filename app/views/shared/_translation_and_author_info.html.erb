@@ -21,7 +21,7 @@
               <div class="media-body pull-left">
                 <h4 class="media-heading"><%= @text.translation.user.name %></h4>
                 <h5><small>
-                    <%= distance_of_time_in_words_to_now(@text.translation.created_at) + ' önce'%>
+                    <%= t distance_of_time_in_words_to_now(@text.translation.created_at) + ' önce'%>
                 </small></h5>
               </div>
             </div>
