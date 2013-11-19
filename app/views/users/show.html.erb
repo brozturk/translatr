@@ -14,7 +14,9 @@
                 <% if current_user.avatar.exists? %>
                   <%= image_tag current_user.avatar.url(:medium), class: 'img-thumbnail'%>
                 <%else%>
-                  <%= image_tag 'avatar_placeholder.png', class: 'img-thumbnail' %>
+                  <%= link_to edit_user_path(current_user) do %>
+                    <%= image_tag 'avatar_placeholder.png', class: 'img-thumbnail' %>
+                  <%end%>
                 <%end%>
               </div>
               <div class="col-md-6 middle">
